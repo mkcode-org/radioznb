@@ -13,6 +13,7 @@ async function requireAuth(ctx: any) {
 export const list = query({
   args: {},
   handler: async (ctx) => {
+    await requireAuth(ctx);
     const programs = await ctx.db.query("programs").order("desc").collect();
     
     // Enrich with host data
