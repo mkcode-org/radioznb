@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+html {
+	background-color: white;
+}
+
+button {
+	cursor: pointer;
+}
+
+button:active {
+	scale: 0.95;
+}
+
+@media (min-width: 640px) {
+	button:hover {
+		scale: 1.05;
+	}
+}
+
+@theme {
+	--animate-fadeInOut: fadeInOut 2s infinite;
+
+	@keyframes fadeInOut {
+		0%: {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0;
+		}
+	}
+}

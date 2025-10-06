@@ -1,0 +1,6 @@
+{
+  "name": "@repo/convex",
+  "version": "1.0.0",
+  "main": "_generated/api.js",
+  "types": "_generated/api.d.ts"
+}

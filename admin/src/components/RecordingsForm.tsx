@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
-import type { Recording } from "../../convex/schema";
+import type { Recording } from "../../../convex/schema";
 import { useMutation, useQuery } from "convex/react";
-import { api } from "../../convex/_generated/api";
-import { Id } from "../../convex/_generated/dataModel";
+import { api } from "../../../convex/_generated/api";
+import { Id } from "../../../convex/_generated/dataModel";
 
 export default function RecordingsForm({
   editingId,
