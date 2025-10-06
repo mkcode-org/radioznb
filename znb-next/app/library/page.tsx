@@ -1,13 +1,15 @@
 'use client'
 
 import { usePlayer } from '@/components/PlayerBar/PlayerContext'
+import { api } from '@/convexApi1759786206716'
+import { useQuery } from 'convex/react'
 import Link from 'next/link'
 
 const Page = () => {
 	const { play } = usePlayer()
 
-	// const data = useQuery(api.programs.list)
-	// console.log(data)
+	const data = useQuery(api.programs.list)
+	console.log(data)
 
 	return (
 		<div className='flex flex-col gap-4'>
