@@ -1,9 +1,10 @@
-import { useState } from 'react'
-import { useQuery, useMutation } from 'convex/react'
+import { generateSlug } from '@/lib/utils'
 import { api } from '@convex/_generated/api'
 import { Id } from '@convex/_generated/dataModel'
+import { useMutation, useQuery } from 'convex/react'
+import { Edit, Trash } from 'lucide-react'
+import { useState } from 'react'
 import { toast } from 'sonner'
-import { Edit, Plus, Trash } from 'lucide-react'
 import AddButton from './AddButton'
 
 export function ProgramsManager() {
@@ -19,6 +20,7 @@ export function ProgramsManager() {
 		name: '',
 		description: '',
 		hostId: '',
+		slug: '',
 	})
 
 	const handleSubmit = async (e: React.FormEvent) => {
@@ -33,6 +35,7 @@ export function ProgramsManager() {
 					hostId: formData.hostId
 						? (formData.hostId as Id<'people'>)
 						: undefined,
+					slug: formData.slug || generateSlug(formData.name),
 				})
 				toast.success('передача обновлена')
 				setEditingId(null)
@@ -44,11 +47,12 @@ export function ProgramsManager() {
 					hostId: formData.hostId
 						? (formData.hostId as Id<'people'>)
 						: undefined,
+					slug: formData.slug || generateSlug(formData.name),
 				})
 				toast.success('передача создана успешно')
 				setIsCreating(false)
 			}
-			setFormData({ name: '', description: '', hostId: '' })
+			setFormData({ name: '', description: '', hostId: '', slug: '' })
 		} catch (error) {
 			console.log(error)
 			toast.error('не удалось сохранить передачу')
@@ -61,6 +65,7 @@ export function ProgramsManager() {
 			name: program.name,
 			description: program.description || '',
 			hostId: program.hostId || '',
+			slug: program.slug || generateSlug(program.name),
 		})
 		setIsCreating(true)
 	}
@@ -80,7 +85,7 @@ export function ProgramsManager() {
 	const handleCancel = () => {
 		setIsCreating(false)
 		setEditingId(null)
-		setFormData({ name: '', description: '', hostId: '' })
+		setFormData({ name: '', description: '', hostId: '', slug: '' })
 	}
 
 	if (!programs || !people) {
@@ -142,6 +147,20 @@ export function ProgramsManager() {
 									setFormData({ ...formData, description: e.target.value })
 								}
 								rows={3}
+								className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary'
+							/>
+						</div>
+						<div>
+							<label className='block text-sm font-medium text-gray-700 mb-1'>
+								короткий адрес страницы
+							</label>
+							<textarea
+								value={formData.slug}
+								onChange={(e) =>
+									setFormData({ ...formData, slug: e.target.value })
+								}
+								rows={3}
+                placeholder={generateSlug(formData.name)}
 								className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary'
 							/>
 						</div>
