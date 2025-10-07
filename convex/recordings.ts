@@ -13,7 +13,6 @@ async function requireAuth(ctx: any) {
 export const list = query({
   args: {},
   handler: async (ctx) => {
-    await requireAuth(ctx);
     const recordings = await ctx.db.query("recordings").order("desc").collect();
 
     // Enrich with program data
@@ -34,7 +33,6 @@ export const list = query({
 export const get = query({
   args: { id: v.id("recordings") },
   handler: async (ctx, args) => {
-    await requireAuth(ctx);
     const recording = await ctx.db.get(args.id);
     if (!recording) return null;
 
