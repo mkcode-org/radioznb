@@ -8,6 +8,7 @@ const applicationTables = {
     name: v.string(),
     description: v.optional(v.string()),
     hostId: v.optional(v.id("people")),
+    slug: v.optional(v.string())
   }),
   people: defineTable({
     name: v.string(),
