@@ -1,7 +1,7 @@
 'use client'
 
 import { usePlayer } from '@/components/PlayerBar/PlayerContext'
-import { api } from '@/convexApi1759786206716'
+import { api } from '@/convex/_generated/api'
 import { useQuery } from 'convex/react'
 import Link from 'next/link'
 

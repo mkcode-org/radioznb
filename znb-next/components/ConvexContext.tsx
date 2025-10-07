@@ -8,6 +8,6 @@ const ConvexContextProvider: FC<PropsWithChildren> = ({ children }) => {
 	return <ConvexProvider client={client}>{children}</ConvexProvider>
 }
 
-const URL = 'https://api.radioznb.ru'
+const URL = process.env.NEXT_PUBLIC_CONVEX_URL!
 
 export default ConvexContextProvider
