@@ -1,13 +1,13 @@
+import { useMutation, useQuery } from 'convex/react'
 import { useState } from 'react'
-import { useQuery, useMutation } from 'convex/react'
-import { api } from '../../../convex/_generated/api'
-import { Id } from '../../../convex/_generated/dataModel'
 import { toast } from 'sonner'
 import AddButton from './AddButton'
+import { api } from '@convex/_generated/api'
+import { Id } from '@convex/_generated/dataModel'
 
 export function GenresManager() {
-	const genres = useQuery(api.genres.list)
 	const createGenre = useMutation(api.genres.create)
+	const genres = useQuery(api.genres.list)
 	const deleteGenre = useMutation(api.genres.remove)
 
 	const [newGenreName, setNewGenreName] = useState('')

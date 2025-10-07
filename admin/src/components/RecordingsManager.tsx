@@ -1,12 +1,12 @@
-import { useState, useRef } from 'react'
-import { useQuery, useMutation } from 'convex/react'
-import { api } from '../../../convex/_generated/api'
-import { Id } from '../../../convex/_generated/dataModel'
+import { api } from '@convex/_generated/api'
+import { Id } from '@convex/_generated/dataModel'
+import { useMutation, useQuery } from 'convex/react'
+import { Edit, Trash } from 'lucide-react'
+import { useState } from 'react'
 import { toast } from 'sonner'
-import RecordingsForm from './RecordingsForm'
-import { Download, Edit, Plus, Trash } from 'lucide-react'
-import RecordingDownload from './RecordingDownload'
 import AddButton from './AddButton'
+import RecordingDownload from './RecordingDownload'
+import RecordingsForm from './RecordingsForm'
 
 export function RecordingsManager() {
 	const recordings = useQuery(api.recordings.list)
