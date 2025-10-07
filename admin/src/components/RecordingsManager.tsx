@@ -10,9 +10,6 @@ import RecordingsForm from './RecordingsForm'
 
 export function RecordingsManager() {
 	const recordings = useQuery(api.recordings.list)
-	const programs = useQuery(api.programs.list)
-	const people = useQuery(api.people.list)
-	const genres = useQuery(api.genres.list)
 
 	const deleteRecording = useMutation(api.recordings.remove)
 
