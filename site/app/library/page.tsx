@@ -1,33 +1,52 @@
 'use client'
 
-import { usePlayer } from '@/components/PlayerBar/PlayerContext'
 import { api } from '@/convex/_generated/api'
-
 import { useQuery } from 'convex/react'
 import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useMemo } from 'react'
+import Recordings from './Recordings'
 
 const Page = () => {
-	const { play } = usePlayer()
+	const programs = useQuery(api.programs.list)
+	const searchParams = useSearchParams()
+	const router = useRouter()
 
-	const data = useQuery(api.programs.list)
-	console.log(data)
+	const slug = searchParams.get('program')
+
+	const selectedProgram = useMemo(
+		() => programs?.find((p) => p.slug === slug),
+		[programs, slug]
+	)
+
+	const handleSearch = (slug: string) => {
+		const params = new URLSearchParams(searchParams.toString())
+		params.set('program', slug)
+		router.push(`?${params.toString()}`)
+	}
 
 	return (
 		<div className='flex flex-col gap-4'>
-			<Link href={'/'}>назад со страницы Библиотека</Link>
-			<button onClick={() => play(beatles)}>{beatles.title}</button>
-			<button onClick={() => play(tech)}>{tech.title}</button>
+			<Link href='/'>назад</Link>
+
+			<div className='flex gap-4'>
+				<div className='flex flex-col items-start min-w-1/3'>
+					{programs?.map(({ _id, name, slug }) => (
+						<button
+							key={_id}
+							onClick={() => handleSearch(slug!)}
+							className={`hover:underline ${
+								selectedProgram?._id === _id ? 'underline font-semibold' : ''
+							}`}
+						>
+							{name}
+						</button>
+					))}
+				</div>
+				{selectedProgram && <Recordings programId={selectedProgram._id} />}
+			</div>
 		</div>
 	)
-}
-
-const beatles = {
-	src: 'https://r0zpfsgakx.ufs.sh/f/ulX3r7DWQlCorlxyWusQhVOCPI7AobXt2jy1uJ6lGdaHBg04',
-	title: 'передача про битлз 20.07',
-}
-const tech = {
-	src: 'https://r0zpfsgakx.ufs.sh/f/ulX3r7DWQlCo1RosU9zBmFW5PUouC34HrbseOvEDTI8Gjakh',
-	title: 'техвстреча 21.07',
 }
 
 export default Page

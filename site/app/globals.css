@@ -13,6 +13,9 @@ button:active {
 }
 
 @media (min-width: 640px) {
+	button {
+		transition: all 0.15s ease-in-out;
+	}
 	button:hover {
 		scale: 1.05;
 	}
