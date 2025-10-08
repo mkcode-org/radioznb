@@ -27,7 +27,7 @@ const VolumeBar = () => {
 					className='volume-slider transition-all duration-700 absolute bottom-full left-0 right-0 accent-black'
 				/>
 			)}
-			<button {...commonProps} onClick={() => setVolume(volume > 0 ? 0 : 0.8)}>
+			<button {...commonProps} onClick={() => setVolume(volume > 0 ? 0 : 1)}>
 				{getVolumeIcon(volume)}
 			</button>
 		</div>
