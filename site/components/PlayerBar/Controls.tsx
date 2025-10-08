@@ -20,7 +20,7 @@ const Controls = () => {
 			{!isLive && (
 				<button
 					className={`m-auto w-fit animate-pulse`}
-					onClick={() => play({ ...orpheyStream, isLive: true })}
+					onClick={() => play(stream)}
 				>
 					🔴
 				</button>
@@ -29,9 +29,10 @@ const Controls = () => {
 	)
 }
 
-export const orpheyStream = {
-	src: 'https://radiopotok1.ru/orfej',
-	title: 'радио орфей',
+export const stream = {
+	src: 'https://server.radioznb.ru/listen/radioznb/radio.mp3',
+	title: 'радио зимы не будет',
+	isLive: true,
 }
 
 export default Controls
