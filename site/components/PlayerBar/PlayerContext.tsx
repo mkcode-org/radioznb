@@ -102,9 +102,14 @@ export const PlayerContextProvider: FC<PropsWithChildren> = ({ children }) => {
 		const audio = audioRef.current
 		if (!audio) return
 		audio.pause()
-		if (src === newSrc) audio.currentTime = timecode
-		if (audio.src !== newSrc) {
+		if (isLive) {
+			audio.currentTime = 0
 			audio.src = newSrc
+		} else {
+			if (src === newSrc) audio.currentTime = timecode
+			if (audio.src !== newSrc) {
+				audio.src = newSrc
+			}
 		}
 		setIsLive(isLive)
 		setTitle(title)
