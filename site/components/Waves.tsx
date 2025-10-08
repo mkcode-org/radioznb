@@ -17,7 +17,7 @@ const WaveAnimation: FC<PropsWithChildren & { playing: boolean }> = ({
 				const nextIndex = (waves.indexOf(prev) + 1) % waves.length
 				return waves[nextIndex]
 			})
-		}, 1000)
+		}, 2000)
 		return () => clearInterval(interval)
 	}, [playing])
 

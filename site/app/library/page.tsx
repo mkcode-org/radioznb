@@ -5,7 +5,8 @@ import { useQuery } from 'convex/react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useMemo } from 'react'
-import Recordings from './Recordings'
+import Program from './Program'
+import Image from 'next/image'
 
 const Page = () => {
 	const programs = useQuery(api.programs.list)
@@ -27,15 +28,16 @@ const Page = () => {
 
 	return (
 		<div className='flex flex-col gap-4'>
-			<Link href='/'>назад</Link>
-
+			<Link href='/' className='w-fit'>
+				<Image src='/assets/logo.jpg' height={64} width={64} alt='logo' />
+			</Link>
 			<div className='flex gap-4'>
-				<div className='flex flex-col items-start min-w-1/3'>
-					{programs?.map(({ _id, name, slug }) => (
+				<div className='flex flex-col gap-2 items-start min-w-1/3'>
+					{programs?.map(({ _id, name, slug, description }) => (
 						<button
 							key={_id}
 							onClick={() => handleSearch(slug!)}
-							className={`hover:underline ${
+							className={`hover:underline text-left ${
 								selectedProgram?._id === _id ? 'underline font-semibold' : ''
 							}`}
 						>
@@ -43,7 +45,7 @@ const Page = () => {
 						</button>
 					))}
 				</div>
-				{selectedProgram && <Recordings programId={selectedProgram._id} />}
+				<Program selectedProgram={selectedProgram} />
 			</div>
 		</div>
 	)
