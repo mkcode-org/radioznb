@@ -46,7 +46,7 @@ export const create = mutation({
 		name: v.string(),
 		description: v.optional(v.string()),
 		hostId: v.optional(v.id('people')),
-    slug: v.optional(v.string())
+		slug: v.optional(v.string()),
 	},
 	handler: async (ctx, args) => {
 		await requireAuth(ctx)
@@ -54,7 +54,7 @@ export const create = mutation({
 			name: args.name,
 			description: args.description,
 			hostId: args.hostId,
-      slug: args.slug
+			slug: args.slug,
 		})
 	},
 })
@@ -65,7 +65,7 @@ export const update = mutation({
 		name: v.string(),
 		description: v.optional(v.string()),
 		hostId: v.optional(v.id('people')),
-    slug: v.optional(v.string())
+		slug: v.optional(v.string()),
 	},
 	handler: async (ctx, args) => {
 		await requireAuth(ctx)
