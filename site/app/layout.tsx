@@ -1,4 +1,5 @@
 import ConvexContextProvider from '@/components/ConvexContext'
+import { ThemeProvider } from '@/components/ThemeProvider'
 import PlayerBar from '@/components/PlayerBar/Player'
 import { PlayerContextProvider } from '@/components/PlayerBar/PlayerContext'
 import type { Metadata } from 'next'
@@ -10,12 +11,14 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='en'>
+		<html lang='en' suppressHydrationWarning>
 			<body className='m-4'>
 				<ConvexContextProvider>
 					<PlayerContextProvider>
-						{children}
-						<PlayerBar />
+						<ThemeProvider>
+							{children}
+							<PlayerBar />
+						</ThemeProvider>
 					</PlayerContextProvider>
 				</ConvexContextProvider>
 			</body>

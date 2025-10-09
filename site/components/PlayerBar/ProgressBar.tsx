@@ -1,5 +1,6 @@
 'use client'
 
+import { useTheme } from 'next-themes'
 import { formatTime } from './Player'
 import { usePlayer } from './PlayerContext'
 import PlayerBarWavesAnimation from './Waves'
@@ -19,7 +20,7 @@ const ProgressBar = () => {
 				step={0.1}
 				value={timecode}
 				onChange={(e) => seek(Number(e.target.value))}
-				className='w-full accent-black'
+				className={`w-full dark:accent-white accent-black`}
 			/>
 			<div className='flex w-full text-xs opacity-30 justify-between'>
 				<div>{formatTime(timecode)}</div>

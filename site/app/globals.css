@@ -1,8 +1,6 @@
 @import 'tailwindcss';
 
-html {
-	background-color: white;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
 button {
 	cursor: pointer;
@@ -35,4 +33,29 @@ button:active {
 			opacity: 0;
 		}
 	}
+}
+
+/* Disable default view transition animations */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation: none;
+	mix-blend-mode: normal;
+}
+
+/* Smooth right-to-left reveal */
+@keyframes wipe-right-left {
+	from {
+		clip-path: inset(0 0 0 100%);
+	}
+	to {
+		clip-path: inset(0 0 0 0);
+	}
+}
+
+html.theme-transition::view-transition-new(root) {
+	animation: wipe-right-left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dark img {
+	filter: invert(1);
 }
