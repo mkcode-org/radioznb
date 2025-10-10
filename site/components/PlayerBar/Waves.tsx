@@ -22,21 +22,21 @@ const PlayerBarWavesAnimation: FC<{ playing: boolean }> = ({ playing }) => {
 }
 
 const Waves: FC<{ src: string[] }> = ({ src }) => (
-	<div className='absolute h-2/5 top-6 w-16 flex gap-4'>
+	<div className='absolute h-3/4 top-0 bottom-0 m-auto w-12 flex'>
 		<div
-			className={`animate-fadeInOut relative opacity-0 w-1/8`}
+			className={`animate-fadeInOut relative opacity-0 w-1/8 h-3/4 m-auto`}
 			style={{ animationDelay: '0ms' }}
 		>
 			<Image src={src[0]} alt='wave-r-1' fill />
 		</div>
 		<div
-			className={`animate-fadeInOut relative opacity-0 w-1/6`}
+			className={`animate-fadeInOut relative opacity-0 w-1/6 h-3/4 m-auto`}
 			style={{ animationDelay: '250ms' }}
 		>
 			<Image src={src[1]} alt='wave-r-2' fill />
 		</div>
 		<div
-			className={`animate-fadeInOut relative opacity-0 w-1/4`}
+			className={`animate-fadeInOut relative opacity-0 w-1/4 h-3/4 m-auto`}
 			style={{ animationDelay: '500ms' }}
 		>
 			<Image src={src[2]} alt='wave-r-3' fill />

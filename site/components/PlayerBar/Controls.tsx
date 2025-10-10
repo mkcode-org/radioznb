@@ -8,11 +8,8 @@ const Controls = () => {
 	return (
 		<>
 			<button onClick={toggle}>
-				<Image
-					priority
-					width={32}
-					height={32}
-					className='w-auto'
+				<img
+					className='min-w-7 w-7 h-8'
 					src={`/assets/${icon}-sm.jpg`}
 					alt='play'
 				/>
@@ -37,7 +34,7 @@ export const stream = {
 export const streamArchive = {
 	title: `моковая архивная запись – орфей`,
 	src: `https://orfeyfm.hostingradio.ru:8034/orfeyfm128.mp3`,
-  isLive: true 
+	isLive: true,
 }
 
 export default Controls
