@@ -11,7 +11,7 @@ const ProgressBar = () => {
 	if (isLive) return <PlayerBarWavesAnimation playing={isPlaying} />
 
 	return (
-		<div className='w-full h-full flex flex-col gap-1'>
+		<div className='w-full h-fit flex flex-col justify-center gap-1'>
 			<div>{title}</div>
 			<input
 				type='range'

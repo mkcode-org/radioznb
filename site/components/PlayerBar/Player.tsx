@@ -10,8 +10,8 @@ const PlayerBar = () => {
 
 	if (!src) return null
 	return (
-		<div className='fixed flex bottom-0 justify-center left-0 right-0 h-24'>
-			<div className='flex w-full items-center border-t-2 h-full p-4 gap-4'>
+		<div className='fixed flex bottom-0 justify-center border-t-2 left-0 sm:right-16 right-8 sm:dark:left-16 dark:left-8 dark:right-0 z-50 h-fit'>
+			<div className='flex w-full items-center sm:ml-16 ml-8 sm:dark:mr-16 dark:mr-8 dark:ml-0 h-fit py-2 px-4 gap-4'>
 				<Controls />
 				<ProgressBar />
 				<VolumeBar />

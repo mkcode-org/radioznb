@@ -2,17 +2,16 @@
 
 import { api } from '@/convex/_generated/api'
 import { useQuery } from 'convex/react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useMemo } from 'react'
 import Program from './Program'
-import Image from 'next/image'
 
 const Page = () => {
 	const programs = useQuery(api.programs.list)
 	const searchParams = useSearchParams()
 	const router = useRouter()
-
 	const slug = searchParams.get('program')
 
 	const selectedProgram = useMemo(

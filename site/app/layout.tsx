@@ -1,7 +1,7 @@
 import ConvexContextProvider from '@/components/ConvexContext'
-import { ThemeProvider } from '@/components/ThemeProvider'
 import PlayerBar from '@/components/PlayerBar/Player'
 import { PlayerContextProvider } from '@/components/PlayerBar/PlayerContext'
+import { ThemeProvider } from '@/components/ThemeProvider'
 import type { Metadata } from 'next'
 import './globals.css'
 
@@ -16,8 +16,9 @@ export default function RootLayout({
 				<ConvexContextProvider>
 					<PlayerContextProvider>
 						<ThemeProvider>
-							<div className='min-w-full fixed inset-0 -z-10 min-h-full bg-black dark:block hidden opacity-70 blur-3xl' />
-							{children}
+							<div className='fixed inset-0 sm:px-16 px-10 mb-20'>
+								<div className='sm:px-4 px-0 h-full'>{children}</div>
+							</div>
 							<PlayerBar />
 						</ThemeProvider>
 					</PlayerContextProvider>

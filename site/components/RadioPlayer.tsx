@@ -1,10 +1,10 @@
 'use client'
 
 import Image from 'next/image'
+import { stream } from './PlayerBar/Controls'
 import { usePlayer } from './PlayerBar/PlayerContext'
 import Volume from './Volume'
 import WaveAnimation from './Waves'
-import { stream } from './PlayerBar/Controls'
 
 const RadioPlayer = () => {
 	const { isPlaying: playing, play, pause, volume, setVolume } = usePlayer()

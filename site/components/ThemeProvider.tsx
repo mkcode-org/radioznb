@@ -1,14 +1,16 @@
 'use client'
 
+import Library from '@/app/library/page'
 import { ThemeProvider as NextThemesProvider, useTheme } from 'next-themes'
 import {
 	createContext,
-	useContext,
+	ReactNode,
 	useCallback,
+	useContext,
 	useEffect,
 	useState,
-	ReactNode,
 } from 'react'
+import { BgOverlay } from './BgOverlay'
 
 const ThemeTransitionContext = createContext<ThemeCtx | null>(null)
 
@@ -28,12 +30,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 }
 
 const ThemeTransitionInner = ({ children }: { children: ReactNode }) => {
-	const { theme, setTheme, resolvedTheme } = useTheme()
+	const { theme, setTheme } = useTheme()
 	const [mounted, setMounted] = useState(false)
 	useEffect(() => setMounted(true), [])
 
 	const toggleTheme = useCallback(() => {
-		const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
+		const newTheme = theme === 'dark' ? 'light' : 'dark'
 
 		// View Transition API
 		if (document.startViewTransition) {
@@ -49,15 +51,18 @@ const ThemeTransitionInner = ({ children }: { children: ReactNode }) => {
 			// fallback
 			setTheme(newTheme)
 		}
-	}, [resolvedTheme, setTheme])
+	}, [theme, setTheme])
 
 	if (!mounted) return <>{children}</>
 
 	return (
-		<ThemeTransitionContext.Provider
-			value={{ theme: resolvedTheme, toggleTheme }}
-		>
-			<div onClick={toggleTheme}>{children}</div>
+		<ThemeTransitionContext.Provider value={{ theme, toggleTheme }}>
+			<BgOverlay />
+			<div
+				onClick={toggleTheme}
+				className={`fixed sm:w-20 w-12 cursor-pointer z-10 dark:bg-white hover:translate-x-0 transition duration-300 ${theme === 'dark' ? 'left-0 -translate-x-4' : 'right-0 translate-x-4 animate-bg'} top-0 bottom-0`}
+			/>
+			{children}
 		</ThemeTransitionContext.Provider>
 	)
 }

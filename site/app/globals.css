@@ -2,6 +2,18 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+html {
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	transition: background 0.5s ease;
+}
+
+html.dark {
+	background-image: url('../public/assets/new/bg1.jpg');
+	animation: bg-frames 0.75s infinite;
+}
+
 button {
 	cursor: pointer;
 }
@@ -21,6 +33,7 @@ button:active {
 
 @theme {
 	--animate-fadeInOut: fadeInOut 2s infinite;
+	--animate-bg: bg-frames 0.75s infinite;
 
 	@keyframes fadeInOut {
 		0%: {
@@ -42,19 +55,29 @@ button:active {
 	mix-blend-mode: normal;
 }
 
-/* Smooth right-to-left reveal */
-@keyframes wipe-right-left {
+@keyframes wipe-left-right {
 	from {
-		clip-path: inset(0 0 0 100%);
-		background-position: 100% center;
+		clip-path: inset(0 100% 0 0);
 	}
 	to {
 		clip-path: inset(0 0 0 0);
-		background-position: 0% center;
 	}
 }
 
-html.theme-transition::view-transition-new(root) {
+@keyframes wipe-right-left {
+	from {
+		clip-path: inset(0 0 0 100%);
+	}
+	to {
+		clip-path: inset(0 0 0 0);
+	}
+}
+
+html.light.theme-transition::view-transition-new(root) {
+	animation: wipe-left-right 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.dark.theme-transition::view-transition-new(root) {
 	animation: wipe-right-left 0.75s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -62,40 +85,26 @@ html.theme-transition::view-transition-new(root) {
 	filter: invert(1);
 }
 
-/* Base background for each theme */
-html {
-	background-size: cover;
-	background-position: center;
-	background-attachment: fixed;
-	transition: background 0.5s ease;
-}
-
-html.dark {
-	background-image: url('../public/assets/new/bg1.jpg');
-	animation: bg-frames 0.75s infinite;
-}
-html.dark {
-	background-image: url('../public/assets/new/bg1.jpg');
-	animation: bg-frames 0.75s infinite;
-}
-
 @keyframes bg-frames {
 	0% {
-		background-image: url('../public/assets/new/bg1.jpg');
+		background-image: url('/assets/new/bg1.jpg');
 	}
-	16% {
-		background-image: url('../public/assets/new/bg2.jpg');
+	16.67% {
+		background-image: url('/assets/new/bg2.jpg');
 	}
-	32% {
-		background-image: url('../public/assets/new/bg3.jpg');
+	33.33% {
+		background-image: url('/assets/new/bg3.jpg');
 	}
-	48% {
-		background-image: url('../public/assets/new/bg2.1.jpg');
+	50% {
+		background-image: url('/assets/new/bg2.1.jpg');
 	}
-	64% {
-		background-image: url('../public/assets/new/bg1.1.jpg');
+	66.67% {
+		background-image: url('/assets/new/bg1.1.jpg');
 	}
-	82% {
-		background-image: url('../public/assets/new/bg3.1.jpg');
+	83.33% {
+		background-image: url('/assets/new/bg3.1.jpg');
+	}
+	100% {
+		background-image: url('/assets/new/bg1.jpg');
 	}
 }
