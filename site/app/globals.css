@@ -46,16 +46,56 @@ button:active {
 @keyframes wipe-right-left {
 	from {
 		clip-path: inset(0 0 0 100%);
+		background-position: 100% center;
 	}
 	to {
 		clip-path: inset(0 0 0 0);
+		background-position: 0% center;
 	}
 }
 
 html.theme-transition::view-transition-new(root) {
-	animation: wipe-right-left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	animation: wipe-right-left 0.75s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .dark img {
 	filter: invert(1);
+}
+
+/* Base background for each theme */
+html {
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	transition: background 0.5s ease;
+}
+
+html.dark {
+	background-image: url('../public/assets/new/bg1.jpg');
+	animation: bg-frames 0.75s infinite;
+}
+html.dark {
+	background-image: url('../public/assets/new/bg1.jpg');
+	animation: bg-frames 0.75s infinite;
+}
+
+@keyframes bg-frames {
+	0% {
+		background-image: url('../public/assets/new/bg1.jpg');
+	}
+	16% {
+		background-image: url('../public/assets/new/bg2.jpg');
+	}
+	32% {
+		background-image: url('../public/assets/new/bg3.jpg');
+	}
+	48% {
+		background-image: url('../public/assets/new/bg2.1.jpg');
+	}
+	64% {
+		background-image: url('../public/assets/new/bg1.1.jpg');
+	}
+	82% {
+		background-image: url('../public/assets/new/bg3.1.jpg');
+	}
 }
