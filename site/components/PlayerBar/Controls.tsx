@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { usePlayer } from './PlayerContext'
 
 const Controls = () => {

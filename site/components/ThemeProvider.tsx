@@ -2,14 +2,13 @@
 
 import { ThemeProvider as NextThemesProvider, useTheme } from 'next-themes'
 import {
-	createContext,
-	ReactNode,
-	useCallback,
-	useContext,
-	useEffect,
-	useState,
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
 } from 'react'
-import { BgOverlay } from './BgOverlay'
 import { stream, streamArchive } from './PlayerBar/Controls'
 import { usePlayer } from './PlayerBar/PlayerContext'
 
