@@ -30,7 +30,7 @@ const RadioPlayer = () => {
 					// height={1000}
 				/>
 				<button
-					onClick={() => (playing ? pause() : play(src))}
+					onClick={() => (playing ? pause() : play(stream))}
 					className={`absolute cursor-pointer bottom-1/6 left-4/7 w-1/5 h-auto`}
 				>
 					<img
