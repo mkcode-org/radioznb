@@ -34,5 +34,10 @@ export const stream = {
 	title: 'радио зимы не будет',
 	isLive: true,
 }
+export const streamArchive = {
+	title: `моковая архивная запись – орфей`,
+	src: `https://orfeyfm.hostingradio.ru:8034/orfeyfm128.mp3`,
+  isLive: true 
+}
 
 export default Controls

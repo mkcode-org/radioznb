@@ -2,15 +2,15 @@
 
 import { ThemeProvider as NextThemesProvider, useTheme } from 'next-themes'
 import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
+	createContext,
+	ReactNode,
+	useCallback,
+	useContext,
+	useEffect,
+	useState,
 } from 'react'
 import { BgOverlay } from './BgOverlay'
-import { stream } from './PlayerBar/Controls'
+import { stream, streamArchive } from './PlayerBar/Controls'
 import { usePlayer } from './PlayerBar/PlayerContext'
 
 const ThemeTransitionContext = createContext<ThemeCtx | null>(null)
@@ -39,14 +39,7 @@ const ThemeTransitionInner = ({ children }: { children: ReactNode }) => {
 
 	const toggleTheme = useCallback(() => {
 		const newTheme = theme === 'dark' ? 'light' : 'dark'
-		play(
-			newTheme === 'dark'
-				? {
-						title: `моковая архивная запись – орфей`,
-						src: `https://orfeyfm.hostingradio.ru:8034/orfeyfm128.mp3`,
-					}
-				: stream
-		)
+		play(newTheme === 'dark' ? streamArchive : stream)
 
 		// View Transition API
 		if (document.startViewTransition) {
