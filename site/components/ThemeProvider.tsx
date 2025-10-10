@@ -43,8 +43,8 @@ const ThemeTransitionInner = ({ children }: { children: ReactNode }) => {
 		play(
 			newTheme === 'dark'
 				? {
-						title: `моки – мок`,
-						src: `http://127.0.0.1:3210/api/storage/37e771f2-aa77-46a3-9b09-85c08696cdf9`,
+						title: `моковая архивная запись – орфей`,
+						src: `https://orfeyfm.hostingradio.ru:8034/orfeyfm128.mp3`,
 					}
 				: stream
 		)
