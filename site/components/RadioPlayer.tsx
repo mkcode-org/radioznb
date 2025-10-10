@@ -14,38 +14,21 @@ const RadioPlayer = () => {
 	const src = theme === 'dark' ? streamArchive : stream
 
 	return (
-		// <div className='flex justify-center w-full h-full items-center'>
-		<WaveAnimation playing={playing}>
-			<div
-				className='relative w-1/2 min-w-[256px]'
-				onDragStart={(e) => e.preventDefault()}
-			>
-				<img
-					// priority
-					src='/assets/RADIO.jpg'
-					alt='radio'
-					// fill
-					// width={400}
-					// width={1061}
-					// height={1000}
-				/>
+		<div
+			className='relative w-3/7 min-w-[256px]'
+			onDragStart={(e) => e.preventDefault()}
+		>
+			<WaveAnimation playing={playing}>
+				<img src='/assets/RADIO.jpg' alt='radio' />
 				<button
-					onClick={() => (playing ? pause() : play(stream))}
+					onClick={() => (playing ? pause() : play(src))}
 					className={`absolute cursor-pointer bottom-1/6 left-4/7 w-1/5 h-auto`}
 				>
-					<img
-						// priority
-						// fill
-						// width={151}
-						// height={178}
-						src={`/assets/${playing ? 'stop' : 'play'}-sm.jpg`}
-						alt='play'
-					/>
+					<img src={`/assets/${playing ? 'stop' : 'play'}-sm.jpg`} alt='play' />
 				</button>
 				<Volume volume={volume} setVolume={setVolume} />
-			</div>
-		</WaveAnimation>
-		// </div>
+			</WaveAnimation>
+		</div>
 	)
 }
 
