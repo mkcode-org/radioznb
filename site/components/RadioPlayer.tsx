@@ -23,14 +23,15 @@ const RadioPlayer = () => {
 					onClick={() => (playing ? pause() : play(src))}
 					className={`absolute cursor-pointer bottom-1/6 left-4/7 w-1/5 h-auto`}
 				>
-					<img src={`/assets/${playing ? 'pause' : 'play'}-sm.png`} alt='play' />
+					<img
+						src={`/assets/${playing ? 'pause' : 'play'}-sm.png`}
+						alt='play'
+					/>
 				</button>
 				<Volume volume={volume} setVolume={setVolume} />
 			</WaveAnimation>
 		</div>
 	)
 }
-
-export type PlayerState = 'playing' | 'stopped' | undefined
 
 export default RadioPlayer
