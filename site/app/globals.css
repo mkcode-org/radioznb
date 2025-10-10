@@ -10,44 +10,43 @@ html {
 }
 
 html.dark {
-	animation: bg-frames 0.75s infinite;
+	background-image: url('/assets/new/bg_animation.gif');
+	/* animation: bg-frames 0.75s infinite; */
 }
 
 html.light {
-  background-color: white;
+	background-color: white;
 }
 
 button {
 	cursor: pointer;
+	transition: transform 0.15s ease-in-out;
 }
 
 button:active {
-	scale: 0.95;
+	transform: scale(0.95);
 }
 
 @media (min-width: 640px) {
-	button {
-		transition: all 0.15s ease-in-out;
-	}
 	button:hover {
-		scale: 1.05;
+		transform: scale(1.05);
 	}
 }
 
 @theme {
 	--animate-fadeInOut: fadeInOut 2s infinite;
 	--animate-bg: bg-frames 0.75s infinite;
+}
 
-	@keyframes fadeInOut {
-		0%: {
-			opacity: 0;
-		}
-		30% {
-			opacity: 1;
-		}
-		50% {
-			opacity: 0;
-		}
+@keyframes fadeInOut {
+	0% {
+		opacity: 0;
+	}
+	30% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
 	}
 }
 
@@ -60,18 +59,22 @@ button:active {
 
 @keyframes wipe-left-right {
 	from {
+		-webkit-clip-path: inset(0 100% 0 0);
 		clip-path: inset(0 100% 0 0);
 	}
 	to {
+		-webkit-clip-path: inset(0 0 0 0);
 		clip-path: inset(0 0 0 0);
 	}
 }
 
 @keyframes wipe-right-left {
 	from {
+		-webkit-clip-path: inset(0 0 0 100%);
 		clip-path: inset(0 0 0 100%);
 	}
 	to {
+		-webkit-clip-path: inset(0 0 0 0);
 		clip-path: inset(0 0 0 0);
 	}
 }
@@ -85,29 +88,6 @@ html.dark.theme-transition::view-transition-new(root) {
 }
 
 .dark img {
+	-webkit-filter: invert(1);
 	filter: invert(1);
-}
-
-@keyframes bg-frames {
-	0% {
-		background-image: url('/assets/new/bg1.jpg');
-	}
-	16.67% {
-		background-image: url('/assets/new/bg2.jpg');
-	}
-	33.33% {
-		background-image: url('/assets/new/bg3.jpg');
-	}
-	50% {
-		background-image: url('/assets/new/bg2.1.jpg');
-	}
-	66.67% {
-		background-image: url('/assets/new/bg1.1.jpg');
-	}
-	83.33% {
-		background-image: url('/assets/new/bg3.1.jpg');
-	}
-	100% {
-		background-image: url('/assets/new/bg1.jpg');
-	}
 }
