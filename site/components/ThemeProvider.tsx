@@ -65,10 +65,9 @@ const ThemeTransitionInner = ({ children }: { children: ReactNode }) => {
 
 	return (
 		<ThemeTransitionContext.Provider value={{ theme, toggleTheme }}>
-			<BgOverlay />
 			<div
 				onClick={toggleTheme}
-				className={`fixed sm:w-20 w-12 cursor-pointer z-10 dark:bg-white hover:translate-x-0 transition duration-300 ${theme === 'dark' ? 'left-0 -translate-x-4' : 'right-0 translate-x-4 animate-bg'} top-0 bottom-0`}
+				className={`fixed sm:w-20 w-12 cursor-pointer z-10 dark:bg-white hover:translate-x-0 transition duration-300 ${theme === 'dark' ? 'left-0 -translate-x-4' : `right-0 translate-x-4 bg-[url('/assets/new/bg_animation.gif')]`} top-0 bottom-0`}
 			/>
 			{children}
 		</ThemeTransitionContext.Provider>

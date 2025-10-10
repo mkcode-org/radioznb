@@ -28,7 +28,7 @@ const PageContent = () => {
 	return (
 		<div className='flex flex-col gap-4'>
 			<Link href='/' className='w-fit'>
-				<Image src='/assets/logo.jpg' height={64} width={64} alt='logo' />
+				<Image src='/assets/logo.png' height={64} width={64} alt='logo' />
 			</Link>
 			<div className='flex gap-4'>
 				<div className='flex flex-col gap-2 items-start min-w-1/3'>

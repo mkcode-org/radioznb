@@ -3,16 +3,12 @@ import { usePlayer } from './PlayerContext'
 
 const Controls = () => {
 	const { isPlaying, toggle, isLive, play } = usePlayer()
-	const icon = isPlaying ? 'stop' : 'play'
+	const icon = isPlaying ? 'pause' : 'play'
 
 	return (
 		<>
 			<button onClick={toggle}>
-				<img
-					className='min-w-7 w-7 h-8'
-					src={`/assets/${icon}-sm.jpg`}
-					alt='play'
-				/>
+				<img className='w-6 h-6' src={`/assets/${icon}-sm.png`} alt='play' />
 			</button>
 			{!isLive && (
 				<button
