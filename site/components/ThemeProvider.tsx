@@ -11,6 +11,8 @@ import {
 	useState,
 } from 'react'
 import { BgOverlay } from './BgOverlay'
+import { usePlayer } from './PlayerBar/PlayerContext'
+import { stream } from './PlayerBar/Controls'
 
 const ThemeTransitionContext = createContext<ThemeCtx | null>(null)
 
@@ -32,10 +34,20 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 const ThemeTransitionInner = ({ children }: { children: ReactNode }) => {
 	const { theme, setTheme } = useTheme()
 	const [mounted, setMounted] = useState(false)
+
+	const { play } = usePlayer()
 	useEffect(() => setMounted(true), [])
 
 	const toggleTheme = useCallback(() => {
 		const newTheme = theme === 'dark' ? 'light' : 'dark'
+		play(
+			newTheme === 'dark'
+				? {
+						title: `моки – мок`,
+						src: `http://127.0.0.1:3210/api/storage/37e771f2-aa77-46a3-9b09-85c08696cdf9`,
+					}
+				: stream
+		)
 
 		// View Transition API
 		if (document.startViewTransition) {
