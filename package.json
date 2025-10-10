@@ -1,6 +1,9 @@
 {
-	"dependencies": {
-		"convex": "^1.27.3",
-		"@convex-dev/auth": "^0.0.90"
-	}
+  "dependencies": {
+    "convex": "^1.27.3",
+    "@convex-dev/auth": "^0.0.90"
+  },
+  "scripts": {
+    "dev": "convex dev"
+  }
 }
