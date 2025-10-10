@@ -2,7 +2,7 @@
 
 import { usePlayer } from '@/components/PlayerBar/PlayerContext'
 import { api } from '@/convex/_generated/api'
-import { Doc, Id } from '@/convex/_generated/dataModel'
+import { Id } from '@/convex/_generated/dataModel'
 import { useQuery } from 'convex/react'
 import { FC, useMemo } from 'react'
 

@@ -1,18 +1,17 @@
 'use client'
 
-import Library from '@/app/library/page'
 import { ThemeProvider as NextThemesProvider, useTheme } from 'next-themes'
 import {
-	createContext,
-	ReactNode,
-	useCallback,
-	useContext,
-	useEffect,
-	useState,
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
 } from 'react'
 import { BgOverlay } from './BgOverlay'
-import { usePlayer } from './PlayerBar/PlayerContext'
 import { stream } from './PlayerBar/Controls'
+import { usePlayer } from './PlayerBar/PlayerContext'
 
 const ThemeTransitionContext = createContext<ThemeCtx | null>(null)
 
@@ -63,7 +62,7 @@ const ThemeTransitionInner = ({ children }: { children: ReactNode }) => {
 			// fallback
 			setTheme(newTheme)
 		}
-	}, [theme, setTheme])
+	}, [theme, setTheme, play])
 
 	if (!mounted) return <>{children}</>
 

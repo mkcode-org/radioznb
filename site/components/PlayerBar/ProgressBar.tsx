@@ -1,6 +1,5 @@
 'use client'
 
-import { useTheme } from 'next-themes'
 import { formatTime } from './Player'
 import { usePlayer } from './PlayerContext'
 import PlayerBarWavesAnimation from './Waves'

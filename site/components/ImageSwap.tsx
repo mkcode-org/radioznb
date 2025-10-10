@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { FC, HTMLAttributes, ImgHTMLAttributes } from 'react'
+import { FC } from 'react'
 
 const SwapImage: FC<{
 	src: string
