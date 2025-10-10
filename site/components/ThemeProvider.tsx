@@ -24,7 +24,11 @@ export const useThemeTransition = () => {
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
 	return (
-		<NextThemesProvider attribute='class'>
+		<NextThemesProvider
+			attribute='class'
+			enableSystem={false}
+			defaultTheme='light'
+		>
 			<ThemeTransitionInner>{children}</ThemeTransitionInner>
 		</NextThemesProvider>
 	)
