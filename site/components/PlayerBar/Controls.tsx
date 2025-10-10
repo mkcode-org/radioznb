@@ -30,7 +30,7 @@ const Controls = () => {
 }
 
 export const stream = {
-	src: 'https://server.radioznb.ru/listen/radioznb/radio.mp3',
+	src: 'https://server.radioznb.ru/listen/radioznb-live/radio.mp3',
 	title: 'радио зимы не будет',
 	isLive: true,
 }
