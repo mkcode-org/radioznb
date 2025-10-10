@@ -10,7 +10,6 @@ html {
 }
 
 html.dark {
-	background-image: url('../public/assets/new/bg1.jpg');
 	animation: bg-frames 0.75s infinite;
 }
 
