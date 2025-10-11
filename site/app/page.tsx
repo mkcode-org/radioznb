@@ -1,13 +1,13 @@
 'use client'
 
 import SwapImage from '@/components/ImageSwap'
-import RadioPlayer from '@/components/RadioPlayer'
+import TapePlayer from '@/components/TapePlayer'
 import Link from 'next/link'
 
 export default function Home() {
 	return (
-		<div className='flex flex-col justify-evenly items-center gap-8 h-full'>
-			<RadioPlayer />
+		<div className='flex flex-col items-center justify-center h-full mt-10'>
+			<TapePlayer />
 			<div className='flex justify-evenly w-full flex-wrap'>
 				<Link href={'/library'}>
 					<SwapImage
