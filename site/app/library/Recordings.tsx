@@ -19,7 +19,7 @@ const Recordings: FC<{ programId: Id<'programs'> }> = ({ programId }) => {
 	if (sorted.length === 0) return <div>Нет записей</div>
 
 	return (
-		<div className='flex flex-col items-start bg-gray-200 rounded-xl p-4 w-full'>
+		<div className='flex flex-col items-start bg-stone-700/50 text-white rounded-xl p-4 w-full'>
 			{sorted.map((rec) => (
 				<button
 					key={rec._id}
