@@ -1,16 +1,12 @@
 'use client'
 
-import { useTheme } from 'next-themes'
-import { stream, streamArchive } from './PlayerBar/Controls'
+import Image from 'next/image'
 import { usePlayer } from './PlayerBar/PlayerContext'
 import Volume from './Volume'
 import WaveAnimation from './Waves'
 
 const RadioPlayer = () => {
-	const { isPlaying: playing, play, pause, volume, setVolume } = usePlayer()
-	const { theme } = useTheme()
-
-	const src = theme === 'dark' ? streamArchive : stream
+	const { isPlaying: playing, volume, setVolume, toggle } = usePlayer()
 
 	return (
 		<div
@@ -18,16 +14,29 @@ const RadioPlayer = () => {
 			onDragStart={(e) => e.preventDefault()}
 		>
 			<WaveAnimation playing={playing}>
-				<img src='/assets/RADIO.png' alt='radio' />
-				<button
-					onClick={() => (playing ? pause() : play(src))}
-					className={`absolute cursor-pointer bottom-1/6 left-4/7 w-1/5 h-auto`}
-				>
-					<img
-						src={`/assets/${playing ? 'pause' : 'play'}-sm.png`}
-						alt='play'
+				<div className='relative w-auto h-auto'>
+					<Image
+						src='/assets/RADIO.png'
+						alt='radio'
+						width={1061}
+						height={1000}
+						priority
 					/>
+				</div>
+				<button
+					onClick={toggle}
+					className='absolute cursor-pointer bottom-1/6 left-4/7 w-1/5 h-auto'
+				>
+					<div className='relative w-full aspect-square'>
+						<Image
+							src={`/assets/${playing ? 'pause' : 'play'}-sm.png`}
+							alt='play'
+							fill
+							className='object-contain'
+						/>
+					</div>
 				</button>
+
 				<Volume volume={volume} setVolume={setVolume} />
 			</WaveAnimation>
 		</div>

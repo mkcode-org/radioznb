@@ -1,6 +1,7 @@
 'use client'
 
 import { ThemeProvider as NextThemesProvider, useTheme } from 'next-themes'
+import { usePathname } from 'next/navigation'
 import {
   createContext,
   ReactNode,
@@ -9,8 +10,6 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { stream, streamArchive } from './PlayerBar/Controls'
-import { usePlayer } from './PlayerBar/PlayerContext'
 
 const ThemeTransitionContext = createContext<ThemeCtx | null>(null)
 
@@ -36,13 +35,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 const ThemeTransitionInner = ({ children }: { children: ReactNode }) => {
 	const { theme, setTheme } = useTheme()
 	const [mounted, setMounted] = useState(false)
+	const pathname = usePathname()
 
-	const { play } = usePlayer()
 	useEffect(() => setMounted(true), [])
 
 	const toggleTheme = useCallback(() => {
 		const newTheme = theme === 'dark' ? 'light' : 'dark'
-		play(newTheme === 'dark' ? streamArchive : stream)
 
 		// View Transition API
 		if (document.startViewTransition) {
@@ -58,16 +56,21 @@ const ThemeTransitionInner = ({ children }: { children: ReactNode }) => {
 			// fallback
 			setTheme(newTheme)
 		}
-	}, [theme, setTheme, play])
+	}, [theme, setTheme])
+
+	useEffect(() => {
+		if (pathname.startsWith('/library') && theme !== 'dark') {
+			toggleTheme()
+		} else if (!pathname.startsWith('/library') && theme !== 'light') {
+			toggleTheme()
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [pathname])
 
 	if (!mounted) return <>{children}</>
 
 	return (
 		<ThemeTransitionContext.Provider value={{ theme, toggleTheme }}>
-			<div
-				onClick={toggleTheme}
-				className={`fixed sm:w-20 w-12 cursor-pointer z-10 dark:bg-white hover:translate-x-0 transition duration-300 ${theme === 'dark' ? 'left-0 -translate-x-4' : `right-0 translate-x-4 bg-[url('/assets/new/bg_animation.gif')]`} top-0 bottom-0`}
-			/>
 			{children}
 		</ThemeTransitionContext.Provider>
 	)
