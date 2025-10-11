@@ -1,17 +1,22 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import Controls from './Controls'
 import { usePlayer } from './PlayerContext'
 import ProgressBar from './ProgressBar'
 import VolumeBar from './VolumeBar'
 
 const PlayerBar = () => {
-	const { src } = usePlayer()
+	const { src, isLive } = usePlayer()
+	const pathname = usePathname()
 
 	if (!src) return null
+	if (pathname === '/' && isLive) return null
 	return (
-		<div className='fixed flex bottom-0 justify-center border-t-2 left-0 sm:right-16 right-8 sm:dark:left-16 dark:left-8 dark:right-0 z-50 h-fit'>
-			<div className='flex relative w-full items-center sm:ml-16 ml-8 sm:dark:mr-16 dark:mr-8 dark:ml-0 h-fit py-4 px-4 gap-2'>
+		<div
+			className={`fixed flex sm:bottom-8 bottom-0 bg-white dark:border-0 dark:bg-transparent dark:backdrop-blur-xs justify-center sm:border-2 border-t-2 sm:max-w-3/4 m-auto sm:h-24 left-0 right-0 z-50`}
+		>
+			<div className='flex relative w-full max-sm:flex-col-reverse items-center h-full p-4 sm:gap-4 gap-2'>
 				<Controls />
 				<ProgressBar />
 				<VolumeBar />
