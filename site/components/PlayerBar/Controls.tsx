@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { usePlayer } from './PlayerContext'
 
 const Controls = () => {
@@ -5,19 +6,25 @@ const Controls = () => {
 	const icon = isPlaying ? 'pause' : 'play'
 
 	return (
-		<>
-			<button onClick={toggle}>
-				<img className='w-6 h-6' src={`/assets/${icon}-sm.png`} alt='play' />
+		<div className='flex gap-4 relative w-full sm:w-fit justify-center max-sm:flex-row-reverse'>
+			<button onClick={toggle} className='w-8 h-8'>
+				<Image
+					className='w-full h-full'
+					width={354}
+					height={354}
+					src={`/assets/${icon}-sm.png`}
+					alt='play'
+				/>
 			</button>
 			{!isLive && (
 				<button
-					className={`m-auto w-fit animate-pulse`}
+					className={`sm:static w-fit absolute left-0 h-full m-auto animate-pulse`}
 					onClick={() => play(stream)}
 				>
 					🔴
 				</button>
 			)}
-		</>
+		</div>
 	)
 }
 
@@ -29,7 +36,7 @@ export const stream = {
 export const streamArchive = {
 	title: `моковая архивная запись – орфей`,
 	src: `https://orfeyfm.hostingradio.ru:8034/orfeyfm128.mp3`,
-	isLive: true,
+	isLive: false,
 }
 
 export default Controls
