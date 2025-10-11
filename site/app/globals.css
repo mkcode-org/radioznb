@@ -11,7 +11,6 @@ html {
 
 html.dark {
 	background-image: url('/assets/new/bg_animation.gif');
-	/* animation: bg-frames 0.75s infinite; */
 }
 
 html.light {
