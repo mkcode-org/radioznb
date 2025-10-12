@@ -12,7 +12,7 @@ export const useLivestreamStatus = () => {
 	useEffect(() => {
 		if (ws.readyState === ReadyState.OPEN) {
 			ws.sendJsonMessage({
-				subs: { 'station:radioznb-soundchecks': { recover: true } },
+				subs: { 'station:radioznb-live': { recover: true } },
 			})
 		}
 	}, [ws, ws.readyState])
