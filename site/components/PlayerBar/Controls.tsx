@@ -6,8 +6,8 @@ const Controls = () => {
 	const icon = isPlaying ? 'pause' : 'play'
 
 	return (
-		<div className='flex gap-4 relative w-full sm:w-fit justify-center max-sm:flex-row-reverse'>
-			<button onClick={toggle} className='w-8 h-8'>
+		<div className='flex gap-4 relative w-full sm:w-32 justify-center max-sm:flex-row-reverse'>
+			<button onClick={toggle} className='w-8 h-8 m-auto'>
 				<Image
 					className='w-full h-full'
 					width={354}
@@ -18,10 +18,16 @@ const Controls = () => {
 			</button>
 			{!isLive && (
 				<button
-					className={`sm:static w-fit absolute left-0 h-full m-auto animate-pulse`}
+					className={`sm:static size-16 p-2 absolute -left-4 -bottom-4`}
 					onClick={() => play(stream)}
 				>
-					🔴
+					<Image
+						className='ignore-invert'
+						src={'/assets/new/live-animation.gif'}
+						width={107}
+						height={107}
+						alt='live'
+					/>
 				</button>
 			)}
 		</div>
