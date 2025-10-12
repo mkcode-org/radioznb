@@ -42,7 +42,6 @@ const TapePlayer = () => {
 					height={768}
 					alt='fm'
 				/>
-				<div className='absolute bg-black/75 animate-[pulse_2.5s_infinite] blur-lg ease-in-out top-[28%] left-[31%] size-8 -z-10' />
 				<Image
 					className='absolute top-0 z-10'
 					src={'/assets/tape-player/live-indicator.png'}
