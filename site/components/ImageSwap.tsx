@@ -5,9 +5,10 @@ const SwapImage: FC<{
 	src: string
 	hover: string
 	size: number | `${number}` | undefined
-}> = ({ src, hover, size }) => {
+  className?: string
+}> = ({ src, hover, size, className}) => {
 	return (
-		<div className='relative inline-block'>
+		<div className={`relative inline-block ${className}`}>
 			<Image
 				src={src}
 				alt=''

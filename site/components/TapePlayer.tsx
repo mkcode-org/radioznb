@@ -9,8 +9,11 @@ const TapePlayer = () => {
 	const isPlayingLive = playing && isLive
 	const isPlayingArchive = playing && !isLive
 
+	const toggleLive = () => (isPlayingLive ? pause() : play(stream))
+	const toggleArchive = () => (isPlayingArchive ? pause() : play(streamArchive))
+
 	return (
-		<div className='w-xl' onDragStart={(e) => e.preventDefault()}>
+		<div className='sm:w-2xl w-xl' onDragStart={(e) => e.preventDefault()}>
 			{/* <WaveAnimation playing={playing}> */}
 			<div className='relative w-full h-full'>
 				<Image
@@ -21,32 +24,39 @@ const TapePlayer = () => {
 					height={768}
 					priority
 				/>
+				<div
+					onClick={toggleLive}
+					className='h-1/3 absolute top-10 w-auto aspect-square left-1/4 cursor-pointer z-20'
+				/>
 				<Image
-					className={`absolute top-0 origin-[67%_25%] transition-transform duration-700 ease-in-out ${isPlayingLive && 'rotate-45'}`}
+					className={`absolute top-0 origin-[67%_25%] max-sm:scale-x-75 transition-transform duration-700 ease-in-out ${isPlayingLive && 'rotate-45'}`}
 					src={'/assets/tape-player/antenna.png'}
 					width={1366}
 					height={768}
 					alt='antenna'
 				/>
 				<Image
-					onClick={() => (isPlayingLive ? pause() : play(stream))}
-					className='absolute top-[28%] left-[30%] h-6 w-auto z-20 cursor-pointer'
+					// onClick={() => toggleLive}
+					className='absolute top-[28%] left-[30%] h-6 w-auto'
 					src={`/assets/tape-player/fm${isPlayingLive ? '-pressed' : ''}.png`}
 					width={1366}
 					height={768}
 					alt='fm'
 				/>
 				<Image
-					className='absolute bottom-[17%] z-20 left-[45%] h-6 w-auto cursor-pointer'
-					onClick={() => (isPlayingArchive ? pause() : play(streamArchive))}
-					src={`/assets/tape-player/tape-buttons${isPlayingArchive ? '-pressed' : ''}.png`}
+					className='absolute top-0 z-10'
+					src={'/assets/tape-player/live-indicator.png'}
 					width={1366}
 					height={768}
 					alt='live'
 				/>
+				<div
+					onClick={toggleArchive}
+					className='h-1/3 aspect-square absolute bottom-10 w-auto left-[41%] cursor-pointer z-10'
+				/>
 				<Image
-					className='absolute top-0 z-10'
-					src={'/assets/tape-player/live-indicator.png'}
+					className='absolute bottom-[17%] left-[45%] h-6 w-auto cursor-pointer'
+					src={`/assets/tape-player/tape-buttons${isPlayingArchive ? '-pressed' : ''}.png`}
 					width={1366}
 					height={768}
 					alt='live'
