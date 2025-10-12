@@ -8,7 +8,10 @@ import { FC, PropsWithChildren, useMemo } from "react";
 import Recording from "./Recording";
 
 const Recordings: FC<{ programId: Id<"programs"> }> = ({ programId }) => {
-  const recordings = useQuery(api.recordings.list, { id: programId });
+  const recordings = useQuery(api.recordings.list, {
+    id: programId,
+	status: "published",
+  });
   const { play } = usePlayer();
 
   const sorted = useMemo(
