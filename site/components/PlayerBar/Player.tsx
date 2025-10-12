@@ -14,9 +14,9 @@ const PlayerBar = () => {
 	if (pathname === '/' && isLive) return null
 	return (
 		<div
-			className={`fixed flex sm:bottom-8 bottom-0 bg-white dark:border-0 dark:bg-transparent dark:backdrop-blur-xs justify-center sm:border-2 border-t-2 sm:max-w-3/4 m-auto sm:h-24 left-0 right-0 z-50`}
+			className={`fixed flex sm:bottom-8 bottom-0 bg-white invert dark:bg-transparent dark:backdrop-blur-xs justify-center sm:max-w-3/4 m-auto sm:h-24 left-0 right-0 z-50`}
 		>
-			<div className='flex relative w-full max-sm:flex-col-reverse items-center h-full p-4 sm:gap-4 gap-2'>
+			<div className='flex relative w-full max-sm:flex-col-reverse items-center h-full p-4 sm:px-8 sm:gap-4 gap-2'>
 				<Controls />
 				<ProgressBar />
 				<VolumeBar />

@@ -25,7 +25,7 @@ const VolumeBar = () => {
 					style={{ writingMode: 'vertical-lr', direction: 'rtl' }}
 					{...commonProps}
 					onChange={(e) => setVolume(parseFloat(e.target.value))}
-					className='volume-slider transition-all duration-700 absolute bottom-full left-0 right-0 accent-black dark:accent-white'
+					className='volume-slider transition-all duration-700 absolute bottom-full left-0 right-0 accent-white dark:accent-black'
 				/>
 			)}
 			<button {...commonProps} onClick={() => setVolume(volume > 0 ? 0 : 1)}>

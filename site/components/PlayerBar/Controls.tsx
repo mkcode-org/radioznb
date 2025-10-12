@@ -22,7 +22,7 @@ const Controls = () => {
 					onClick={() => play(stream)}
 				>
 					<Image
-						className='ignore-invert'
+						className='ignore-invert invert'
 						src={'/assets/new/live-animation.gif'}
 						width={107}
 						height={107}
