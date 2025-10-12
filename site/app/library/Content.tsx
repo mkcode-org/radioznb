@@ -1,8 +1,8 @@
 'use client'
 
+import HomeButton from '@/components/HomeButton'
 import { api } from '@/convex/_generated/api'
 import { useQuery } from 'convex/react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useMemo } from 'react'
@@ -27,9 +27,7 @@ const PageContent = () => {
 
 	return (
 		<div className='flex flex-col gap-4'>
-			<Link href='/' className='w-fit'>
-				<Image src='/assets/logo.png' height={64} width={64} alt='logo' />
-			</Link>
+			<HomeButton />
 			<div className='flex'>
 				<Link
 					href={'/library'}
