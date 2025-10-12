@@ -8,7 +8,7 @@ export default function Home() {
 	return (
 		<div className='flex flex-col items-center justify-center inset-0 fixed'>
 			<TapePlayer />
-			<div className='flex justify-around flex-wrap w-full'>
+			<div className='flex justify-evenly flex-wrap w-full'>
 				<Link href={'/library'} className='max-sm:w-1/3'>
 					<SwapImage
 						src='/assets/tab-archive.jpg'
