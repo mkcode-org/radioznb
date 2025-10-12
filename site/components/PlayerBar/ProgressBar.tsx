@@ -10,7 +10,7 @@ const ProgressBar = () => {
 	if (isLive) return <PlayerBarWavesAnimation playing={isPlaying} />
 
 	return (
-		<div className='w-full h-fit flex flex-col justify-center gap-1'>
+		<div className='w-full h-fit flex flex-col min-w-0 justify-center gap-1'>
 			<div className='truncate'>{title}</div>
 			<input
 				type='range'
