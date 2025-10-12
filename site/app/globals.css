@@ -35,6 +35,7 @@ button:active {
 @theme {
 	--animate-fadeInOut: fadeInOut 2s infinite;
 	--animate-bg: bg-frames 0.75s infinite;
+	--animate-blink: blink 1.2s steps(1, end) infinite;
 }
 
 @keyframes fadeInOut {
@@ -46,6 +47,15 @@ button:active {
 	}
 	50% {
 		opacity: 0;
+	}
+}
+
+@keyframes blink {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0.8;
 	}
 }
 
