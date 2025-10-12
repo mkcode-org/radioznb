@@ -24,10 +24,6 @@ const TapePlayer = () => {
 					height={768}
 					priority
 				/>
-				<div
-					onClick={toggleLive}
-					className='h-1/3 absolute top-10 w-auto aspect-square left-1/4 cursor-pointer z-20'
-				/>
 				<Image
 					className={`absolute top-0 origin-[67%_25%] max-sm:scale-x-75 transition-transform duration-700 ease-in-out ${isPlayingLive && 'rotate-45'}`}
 					src={'/assets/tape-player/antenna.png'}
@@ -35,14 +31,18 @@ const TapePlayer = () => {
 					height={768}
 					alt='antenna'
 				/>
+				<div
+					onClick={toggleLive}
+					className='h-1/3 absolute top-10 w-auto aspect-square left-1/4 cursor-pointer z-20'
+				/>
 				<Image
-					// onClick={() => toggleLive}
 					className='absolute top-[28%] left-[30%] h-6 w-auto'
 					src={`/assets/tape-player/fm${isPlayingLive ? '-pressed' : ''}.png`}
 					width={1366}
 					height={768}
 					alt='fm'
 				/>
+				<div className='absolute bg-black/75 animate-[pulse_2.5s_infinite] blur-lg ease-in-out top-[28%] left-[31%] size-8 -z-10' />
 				<Image
 					className='absolute top-0 z-10'
 					src={'/assets/tape-player/live-indicator.png'}
