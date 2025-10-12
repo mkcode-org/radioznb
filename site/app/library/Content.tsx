@@ -30,19 +30,29 @@ const PageContent = () => {
 			<Link href='/' className='w-fit'>
 				<Image src='/assets/logo.png' height={64} width={64} alt='logo' />
 			</Link>
-			<div className='flex gap-4'>
-				<div className='flex flex-col gap-2 items-start min-w-1/3'>
-					{programs?.map(({ _id, name, slug }) => (
-						<button
-							key={_id}
-							onClick={() => handleSearch(slug!)}
-							className={`hover:underline text-left ${
-								selectedProgram?._id === _id ? 'underline font-semibold' : ''
-							}`}
-						>
-							{name}
-						</button>
-					))}
+			<div className='flex'>
+				<Link
+					href={'/library'}
+					className={`sm:hidden flex select-none text-4xl items-center text-center justify-center size-16 ${selectedProgram ? 'block' : 'hidden'}`}
+				>
+					{'◀'}
+				</Link>
+				<div
+					className={`flex flex-col gap-2 items-start min-w-1/3 ${selectedProgram ? 'max-sm:hidden' : ''}`}
+				>
+					<div className={`flex flex-col gap-2 items-start min-w-1/3`}>
+						{programs?.map(({ _id, name, slug }) => (
+							<button
+								key={_id}
+								onClick={() => handleSearch(slug!)}
+								className={`hover:underline text-left ${
+									selectedProgram?._id === _id ? 'underline font-semibold' : ''
+								}`}
+							>
+								{name}
+							</button>
+						))}
+					</div>
 				</div>
 				<Program selectedProgram={selectedProgram} />
 			</div>
