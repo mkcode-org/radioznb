@@ -12,11 +12,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en' suppressHydrationWarning>
-			<body>
+			<body className='mb-34'>
 				<ConvexContextProvider>
 					<PlayerContextProvider>
 						<ThemeProvider>
-							<div className='fixed inset-0 sm:px-16 p-6 mb-34'>{children}</div>
+							<div className='sm:px-16 p-6'>{children}</div>
 							<PlayerBar />
 						</ThemeProvider>
 					</PlayerContextProvider>
