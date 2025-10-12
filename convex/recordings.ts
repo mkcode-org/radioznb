@@ -20,10 +20,11 @@ export const list = query({
     let query = ctx.db.query("recordings");
 
     if (args.id) {
-      query = query.filter(
-        (q) =>
-          q.eq(q.field("programId"), args.id) &&
-          q.eq(q.field("status"), "published")
+      query = query.filter((q) =>
+        q.and(
+          q.eq(q.field("programId"), args.id),
+          q.eq(q.field("status"), args.status)
+        )
       );
     }
 
