@@ -142,7 +142,7 @@ services:
       - ./out:/usr/share/nginx/html:ro
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     labels:
-      reproxy.server: "new.radioznb.ru"
+      reproxy.server: "radioznb.ru"
       reproxy.port: "80"
       reproxy.route: "^/(.*)"
       reproxy.dest: "/$1"
@@ -161,10 +161,12 @@ services:
       - TZ=Europe/Moscow
       - DOCKER_ENABLED=true
       - SSL_TYPE=auto
-      - SSL_ACME_FQDN=inkvizitor.sukalov.dev,api.radioznb.ru,admin.radioznb.ru,dashboard.radioznb.ru,new.radioznb.ru
+      - SSL_ACME_FQDN=inkvizitor.sukalov.dev,api.radioznb.ru,admin.radioznb.ru,dashboard.radioznb.ru,radioznb.ru
       - SSL_ACME_EMAIL=matvey10@gmail.com
       - STATIC_ENABLED=true
       - TIMEOUT_WRITE=0
+      - LOGGER_ENABLED=true
+      - LOGGER_STDOUT=true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - reproxy-acme:/srv/var/acme
