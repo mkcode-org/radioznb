@@ -22,7 +22,7 @@ const PlayerBarWavesAnimation: FC<{ playing: boolean }> = ({ playing }) => {
 }
 
 const Waves: FC<{ src: string[] }> = ({ src }) => (
-	<div className='absolute left-[calc(50%+1rem)] sm:left-12 h-1/2 top-0 bottom-0 m-auto w-12 flex'>
+	<div className='absolute left-[calc(50%+1.25rem)] sm:left-26 h-1/2 top-0 bottom-0 m-auto w-12 flex'>
 		<div
 			className={`animate-fadeInOut relative opacity-0 w-1/8 h-3/10 m-auto`}
 			style={{ animationDelay: '0ms' }}
