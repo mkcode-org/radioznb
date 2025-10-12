@@ -14,7 +14,7 @@ const VolumeBar = () => {
 	}
 
 	return (
-		<div className='relative max-sm:hidden'>
+		<div className='relative max-lg:hidden'>
 			{visible && (
 				<input
 					type='range'
