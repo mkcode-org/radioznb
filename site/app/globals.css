@@ -90,3 +90,7 @@ html.dark.theme-transition::view-transition-new(root) {
 	-webkit-filter: invert(1);
 	filter: invert(1);
 }
+
+img {
+	user-select: none;
+}
