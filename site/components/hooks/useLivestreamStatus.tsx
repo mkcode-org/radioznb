@@ -1,35 +1,47 @@
 import { useEffect, useState } from 'react'
-import useWebSocket from 'react-use-websocket'
+import useWebSocket, { ReadyState } from 'react-use-websocket'
 
 export const useLivestreamStatus = () => {
-	const [livestream, setLivestream] = useState(undefined)
+	const [livestream, setLivestream] = useState<boolean | undefined>(undefined)
+
 	const ws = useWebSocket(
 		'wss://server.radioznb.ru/api/live/nowplaying/websocket'
 	)
 
-	ws.sendJsonMessage({
-		subs: { 'station:radioznb-soundchecks': { recover: true } },
-	})
-
+	// Send subscription once connected
 	useEffect(() => {
-		async function fetchData() {
-			const response = await fetch(
-				'https://server.radioznb.ru/api/nowplaying_static/radioznb-live.json'
-			)
-			if (!response.ok) throw new Error('Network response was not ok')
-			return response.json()
+		if (ws.readyState === ReadyState.OPEN) {
+			ws.sendJsonMessage({
+				subs: { 'station:radioznb-soundchecks': { recover: true } },
+			})
 		}
+	}, [ws, ws.readyState])
 
+	// Fallback initial fetch
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await fetch(
+					'https://server.radioznb.ru/api/nowplaying_static/radioznb-live.json'
+				)
+				if (!response.ok) throw new Error('Network response was not ok')
+				const data = await response.json()
+				setLivestream(data.live)
+			} catch (err) {
+				console.error('Fetch error:', err)
+			}
+		}
 		fetchData()
-			.then((data) => setLivestream(data.live))
-			.catch((error) => console.error('Fetch error:', error))
 	}, [])
 
+	// Update livestream from websocket messages
 	useEffect(() => {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const msg = ws.lastJsonMessage as any
 		const live = msg?.pub?.data?.np?.live
-		if (live !== undefined) setLivestream(live)
+		if (typeof live === 'boolean') {
+			setLivestream((prev) => (prev !== live ? live : prev))
+		}
 	}, [ws.lastJsonMessage])
 
 	return livestream

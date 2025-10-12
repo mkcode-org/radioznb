@@ -20,6 +20,7 @@ const Controls = () => {
 				<button
 					className={`sm:static size-16 p-2 absolute -left-4 -bottom-4`}
 					onClick={() => play(stream)}
+					title={`в эфире ${livestream.streamer_name}!`}
 				>
 					<Image
 						className='ignore-invert invert'

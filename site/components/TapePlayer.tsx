@@ -78,8 +78,9 @@ const TapePlayer = () => {
 				/>
 				<div
 					onClick={() =>
+						randomArchiveUrl &&
 						toggle(isPlayingArchive, {
-							src: randomArchiveUrl || '',
+							src: randomArchiveUrl,
 							title: randomRec?.episodeTitle || '',
 						})
 					}
