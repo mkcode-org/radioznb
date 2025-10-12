@@ -140,6 +140,7 @@ services:
     restart: always
     volumes:
       - ./out:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     labels:
       reproxy.server: "new.radioznb.ru"
       reproxy.port: "80"
