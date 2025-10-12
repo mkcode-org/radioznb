@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import useWebSocket, { ReadyState } from 'react-use-websocket'
 
 export const useLivestreamStatus = () => {
-	const [livestream, setLivestream] = useState<boolean | undefined>(undefined)
+	const [livestream, setLivestream] = useState(undefined)
 
 	const ws = useWebSocket(
 		'wss://server.radioznb.ru/api/live/nowplaying/websocket'
@@ -39,8 +39,10 @@ export const useLivestreamStatus = () => {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const msg = ws.lastJsonMessage as any
 		const live = msg?.pub?.data?.np?.live
-		if (typeof live === 'boolean') {
-			setLivestream((prev) => (prev !== live ? live : prev))
+		if (live && 'is_live' in live) {
+			setLivestream((prev) =>
+				JSON.stringify(prev) !== JSON.stringify(live) ? live : prev
+			)
 		}
 	}, [ws.lastJsonMessage])
 
