@@ -1,9 +1,11 @@
 'use client'
 
 import { api } from '@/convex/_generated/api'
+import { Doc } from '@/convex/_generated/dataModel'
 import { useQuery } from 'convex/react'
 import Image from 'next/image'
-import { stream, streamArchive } from './PlayerBar/Controls'
+import { useEffect, useState } from 'react'
+import { stream } from './PlayerBar/Controls'
 import { usePlayer } from './PlayerBar/PlayerContext'
 import WaveAnimation from './Waves'
 
@@ -11,13 +13,28 @@ const TapePlayer = () => {
 	const { isPlaying: playing, isLive, play, pause } = usePlayer()
 	const isPlayingLive = playing && isLive
 	const isPlayingArchive = playing && !isLive
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const allArchives = useQuery(api.recordings.list, {}) || []
+	const [randomRec, setRandomRec] = useState<Doc<'recordings'> | undefined>(
+		undefined
+	)
 
-	const allArchives = useQuery(api.recordings.list, {})
+	useEffect(() => {
+		if (allArchives.length > 0) {
+			const index = Math.floor(Math.random() * allArchives.length)
+			setRandomRec(allArchives[index])
+		}
+	}, [allArchives, isPlayingLive])
 
-	console.log(allArchives)
+	const randomArchiveUrl = useQuery(
+		api.recordings.getAudioUrl,
+		randomRec ? { id: randomRec._id } : 'skip'
+	)
 
-	const toggleLive = () => (isPlayingLive ? pause() : play(stream))
-	const toggleArchive = () => (isPlayingArchive ? pause() : play(streamArchive))
+	const toggle = (
+		isPlaying: boolean,
+		stream: { src: string; title: string; isLive?: boolean }
+	) => (isPlaying ? pause() : play(stream))
 
 	return (
 		<div
@@ -42,7 +59,7 @@ const TapePlayer = () => {
 					alt='antenna'
 				/>
 				<div
-					onClick={toggleLive}
+					onClick={() => toggle(isPlayingLive, stream)}
 					className='h-1/3 absolute top-10 w-auto aspect-square left-1/4 cursor-pointer z-20'
 				/>
 				<Image
@@ -60,7 +77,12 @@ const TapePlayer = () => {
 					alt='live'
 				/>
 				<div
-					onClick={toggleArchive}
+					onClick={() =>
+						toggle(isPlayingArchive, {
+							src: randomArchiveUrl || '',
+							title: randomRec?.episodeTitle || '',
+						})
+					}
 					className='h-1/3 aspect-square absolute bottom-10 w-auto left-[41%] cursor-pointer z-10'
 				/>
 				<Image
