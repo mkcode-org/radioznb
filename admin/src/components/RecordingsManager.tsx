@@ -9,7 +9,7 @@ import RecordingDownload from './RecordingDownload'
 import RecordingsForm from './RecordingsForm'
 
 export function RecordingsManager() {
-	const recordings = useQuery(api.recordings.list)
+	const recordings = useQuery(api.recordings.list, {})
 
 	const deleteRecording = useMutation(api.recordings.remove)
 

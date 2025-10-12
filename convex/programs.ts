@@ -46,7 +46,7 @@ export const create = mutation({
 		name: v.string(),
 		description: v.optional(v.string()),
 		hostId: v.optional(v.id('people')),
-		slug: v.optional(v.string()),
+		slug: v.string(),
 	},
 	handler: async (ctx, args) => {
 		await requireAuth(ctx)
