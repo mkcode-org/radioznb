@@ -32,7 +32,7 @@ const WaveAnimation: FC<PropsWithChildren & { playing: boolean }> = ({
 }
 
 const WavesLeft: FC<{ src: string[] }> = ({ src }) => (
-	<div className='absolute -left-16 h-1/3 w-1/3 top-2/5 flex gap-2 sm:gap-6 max-sm:hidden'>
+	<div className='absolute -left-12 h-1/3 w-1/4 top-2/5 flex gap-2 sm:gap-6 max-sm:hidden'>
 		<div
 			className={`animate-fadeInOut relative opacity-0 h-full w-1/4`}
 			style={{ animationDelay: '200ms' }}
@@ -55,7 +55,7 @@ const WavesLeft: FC<{ src: string[] }> = ({ src }) => (
 )
 
 const WavesRight: FC<{ src: string[] }> = ({ src }) => (
-	<div className='absolute -right-26 h-1/3 w-1/3 top-2/5 flex gap-2 sm:gap-6 max-sm:hidden'>
+	<div className='absolute -right-16 h-1/3 w-1/4 top-2/5 flex gap-2 sm:gap-6 max-sm:hidden'>
 		<div
 			className={`animate-fadeInOut relative opacity-0 top-2/5 h-2/5 w-1/8`}
 			style={{ animationDelay: '0ms' }}

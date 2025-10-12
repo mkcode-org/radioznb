@@ -1,20 +1,30 @@
 'use client'
 
+import { api } from '@/convex/_generated/api'
+import { useQuery } from 'convex/react'
 import Image from 'next/image'
 import { stream, streamArchive } from './PlayerBar/Controls'
 import { usePlayer } from './PlayerBar/PlayerContext'
+import WaveAnimation from './Waves'
 
 const TapePlayer = () => {
 	const { isPlaying: playing, isLive, play, pause } = usePlayer()
 	const isPlayingLive = playing && isLive
 	const isPlayingArchive = playing && !isLive
 
+	const allArchives = useQuery(api.recordings.list, {})
+
+	console.log(allArchives)
+
 	const toggleLive = () => (isPlayingLive ? pause() : play(stream))
 	const toggleArchive = () => (isPlayingArchive ? pause() : play(streamArchive))
 
 	return (
-		<div className='sm:w-2xl w-xl' onDragStart={(e) => e.preventDefault()}>
-			{/* <WaveAnimation playing={playing}> */}
+		<div
+			className='sm:w-2xl w-xl relative'
+			onDragStart={(e) => e.preventDefault()}
+		>
+			<WaveAnimation playing={playing} />
 			<div className='relative w-full h-full'>
 				<Image
 					className='relative inset-0 z-10'
@@ -75,7 +85,6 @@ const TapePlayer = () => {
 					alt='gear-r'
 				/>
 			</div>
-			{/* </WaveAnimation> */}
 		</div>
 	)
 }
