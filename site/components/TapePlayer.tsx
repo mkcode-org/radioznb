@@ -10,21 +10,20 @@ import { usePlayer } from './PlayerBar/PlayerContext'
 import WaveAnimation from './Waves'
 
 const TapePlayer = () => {
-	const { isPlaying: playing, isLive, play, pause } = usePlayer()
+	const { isPlaying: playing, isLive, play, pause, livestream } = usePlayer()
 	const isPlayingLive = playing && isLive
 	const isPlayingArchive = playing && !isLive
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const allArchives = useQuery(api.recordings.list, {}) || []
+	const allArchives = useQuery(api.recordings.list, {})
 	const [randomRec, setRandomRec] = useState<Doc<'recordings'> | undefined>(
 		undefined
 	)
 
 	useEffect(() => {
-		if (allArchives.length > 0) {
+		if (allArchives && allArchives.length > 0) {
 			const index = Math.floor(Math.random() * allArchives.length)
 			setRandomRec(allArchives[index])
 		}
-	}, [allArchives, isPlayingLive])
+	}, [allArchives])
 
 	const randomArchiveUrl = useQuery(
 		api.recordings.getAudioUrl,
@@ -70,7 +69,8 @@ const TapePlayer = () => {
 					alt='fm'
 				/>
 				<Image
-					className='absolute top-0 z-10'
+					title={`в эфире ${livestream?.streamer_name}!`}
+					className={`absolute top-0 z-10 ${livestream?.is_live ? 'animate-blink' : 'hidden'}`}
 					src={'/assets/tape-player/live-indicator.png'}
 					width={1366}
 					height={768}
