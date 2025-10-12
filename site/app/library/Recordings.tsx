@@ -4,7 +4,7 @@ import { usePlayer } from '@/components/PlayerBar/PlayerContext'
 import { api } from '@/convex/_generated/api'
 import { Id } from '@/convex/_generated/dataModel'
 import { useQuery } from 'convex/react'
-import { FC, useMemo } from 'react'
+import { FC, PropsWithChildren, useMemo } from 'react'
 
 const Recordings: FC<{ programId: Id<'programs'> }> = ({ programId }) => {
 	const recordings = useQuery(api.recordings.list, { id: programId })
@@ -15,11 +15,11 @@ const Recordings: FC<{ programId: Id<'programs'> }> = ({ programId }) => {
 		[recordings]
 	)
 
-	if (!sorted) return <div>Загрузка…</div>
-	if (sorted.length === 0) return <div>Нет записей</div>
+	if (!sorted) return <Container>Загрузка…</Container>
+	if (sorted.length === 0) return <Container>Нет записей</Container>
 
 	return (
-		<div className='flex flex-col items-start bg-stone-700/50 text-white rounded-xl p-4 w-full'>
+		<Container>
 			{sorted.map((rec) => (
 				<button
 					key={rec._id}
@@ -35,8 +35,14 @@ const Recordings: FC<{ programId: Id<'programs'> }> = ({ programId }) => {
 					{rec.episodeTitle}
 				</button>
 			))}
-		</div>
+		</Container>
 	)
 }
+
+const Container: FC<PropsWithChildren> = ({ children }) => (
+	<div className='flex flex-col items-start bg-stone-700/50 text-white rounded-xl p-4 w-full'>
+		{children}
+	</div>
+)
 
 export default Recordings
