@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { usePlayer } from './PlayerContext'
+import Image from 'next/image'
 
 const VolumeBar = () => {
 	const { volume, setVolume } = usePlayer()
@@ -28,7 +29,13 @@ const VolumeBar = () => {
 				/>
 			)}
 			<button {...commonProps} onClick={() => setVolume(volume > 0 ? 0 : 1)}>
-				{getVolumeIcon(volume)}
+				<Image
+					className='h-8 w-auto'
+					src={`/assets/new/speaker${getVolumeIcon(volume)}.png`}
+					width={515}
+					height={310}
+					alt='volume'
+				/>
 			</button>
 		</div>
 	)
@@ -37,13 +44,13 @@ const VolumeBar = () => {
 const getVolumeIcon = (volume: number) => {
 	switch (true) {
 		case volume >= 0.66:
-			return '🔊'
+			return '3'
 		case volume >= 0.33:
-			return '🔉'
+			return '2'
 		case volume > 0:
-			return '🔈'
+			return ''
 		case volume === 0:
-			return '🔇'
+			return ''
 	}
 }
 
