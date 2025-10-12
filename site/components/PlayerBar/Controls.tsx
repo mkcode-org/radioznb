@@ -6,8 +6,8 @@ const Controls = () => {
 	const icon = isPlaying ? 'pause' : 'play'
 
 	return (
-		<div className='flex gap-4 relative w-full sm:w-32 justify-center max-sm:flex-row-reverse'>
-			<button onClick={toggle} className='w-8 h-8 m-auto'>
+		<div className='flex gap-4 relative w-full sm:w-32 sm:justify-start items-center justify-center max-sm:flex-row-reverse'>
+			<button onClick={toggle} className='size-8'>
 				<Image
 					className='w-full h-full'
 					width={354}
