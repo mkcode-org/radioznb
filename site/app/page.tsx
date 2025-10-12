@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function Home() {
 	return (
-		<div className='flex flex-col items-center justify-center h-full mt-40'>
+		<div className='flex flex-col items-center justify-center inset-0 fixed'>
 			<TapePlayer />
 			<div className='flex justify-around flex-wrap w-full'>
 				<Link href={'/library'} className='max-sm:w-1/3'>
