@@ -86,7 +86,7 @@ html.dark.theme-transition::view-transition-new(root) {
 	animation: wipe-right-left 0.75s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.dark img {
+.dark img:not(.ignore-invert) {
 	-webkit-filter: invert(1);
 	filter: invert(1);
 }
