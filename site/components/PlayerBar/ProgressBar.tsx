@@ -11,7 +11,7 @@ const ProgressBar = () => {
 
 	return (
 		<div className='w-full h-fit flex flex-col justify-center gap-1'>
-			<div>{title}</div>
+			<div className='truncate'>{title}</div>
 			<input
 				type='range'
 				min={0}
