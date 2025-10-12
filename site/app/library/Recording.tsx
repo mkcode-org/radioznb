@@ -24,7 +24,7 @@ export default function Recording({
           src: url,
         });
       }}
-      className="text-left w-full py-1 hover:underline"
+      className="text-left py-1 hover:underline"
     >
       {rec.episodeTitle}
     </button>
