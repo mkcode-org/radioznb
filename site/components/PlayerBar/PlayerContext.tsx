@@ -9,6 +9,7 @@ import {
 	useRef,
 	useState,
 } from 'react'
+import { useLivestreamStatus } from '../hooks/useLivestreamStatus'
 
 export const PlayerContextProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [src, setSrc] = useState('')
@@ -18,6 +19,7 @@ export const PlayerContextProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [duration, setDuration] = useState(defaultState.duration)
 	const [isLive, setIsLive] = useState(defaultState.isLive)
 	const [volume, setVolume] = useState(defaultState.volume)
+	const livestream = useLivestreamStatus()
 
 	const audioRef = useRef<HTMLAudioElement | null>(null)
 
@@ -155,6 +157,7 @@ export const PlayerContextProvider: FC<PropsWithChildren> = ({ children }) => {
 				seek,
 				volume,
 				setVolume,
+				livestream,
 			}}
 		>
 			{children}
@@ -175,6 +178,12 @@ const defaultState: PlayerContextType = {
 	toggle: () => {},
 	volume: 1,
 	setVolume: () => {},
+	livestream: {
+		art: null,
+		broadcast_start: null,
+		is_live: false,
+		streamer_name: '',
+	},
 }
 
 const PlayerContext = createContext<PlayerContextType>(defaultState)
@@ -204,6 +213,14 @@ type PlayerContextType = {
 	seek: (time: number) => void
 	volume: number
 	setVolume: (vol: number) => void
+	livestream:
+		| {
+				art: string | null
+				broadcast_start: number | null
+				is_live: boolean
+				streamer_name: string
+		  }
+		| undefined
 }
 
 type PlayOptions = {

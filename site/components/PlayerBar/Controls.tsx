@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { usePlayer } from './PlayerContext'
 
 const Controls = () => {
-	const { isPlaying, toggle, isLive, play } = usePlayer()
+	const { isPlaying, toggle, isLive, play, livestream } = usePlayer()
 	const icon = isPlaying ? 'pause' : 'play'
 
 	return (
@@ -16,7 +16,7 @@ const Controls = () => {
 					alt='play'
 				/>
 			</button>
-			{!isLive && (
+			{!isLive && livestream?.is_live && (
 				<button
 					className={`sm:static size-16 p-2 absolute -left-4 -bottom-4`}
 					onClick={() => play(stream)}
