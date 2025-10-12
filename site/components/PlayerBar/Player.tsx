@@ -14,7 +14,7 @@ const PlayerBar = () => {
 	if (pathname === '/' && isLive) return null
 	return (
 		<div
-			className={`fixed flex sm:bottom-8 bottom-0 bg-white invert dark:bg-transparent dark:backdrop-blur-xs justify-center sm:max-w-3/4 m-auto sm:h-24 left-0 right-0 z-50`}
+			className={`fixed flex sm:bottom-8 bottom-0 bg-white invert dark:bg-transparent dark:backdrop-blur-xs justify-center ${isLive ? 'sm:max-w-1/3' : 'sm:max-w-2/3'} transition-all duration-300 m-auto sm:h-24 left-0 right-0 z-50`}
 		>
 			<div className='flex relative w-full max-sm:flex-col-reverse items-center h-full p-4 sm:px-8 sm:gap-4 gap-2'>
 				<Controls />
