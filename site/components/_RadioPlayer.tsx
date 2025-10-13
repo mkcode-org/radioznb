@@ -13,7 +13,7 @@ const RadioPlayer = () => {
 			className='relative w-3/7 min-w-[256px]'
 			onDragStart={(e) => e.preventDefault()}
 		>
-			<WaveAnimation playing={playing}>
+			<WaveAnimation>
 				<div className='relative w-auto h-auto'>
 					<Image
 						src='/assets/RADIO.png'
