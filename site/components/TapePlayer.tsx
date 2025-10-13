@@ -5,12 +5,13 @@ import { Doc } from '@/convex/_generated/dataModel'
 import { useQuery } from 'convex/react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import LiveIndicator from './LiveIndicator'
 import { stream } from './PlayerBar/Controls'
 import { usePlayer } from './PlayerBar/PlayerContext'
 import WaveAnimation from './Waves'
 
 const TapePlayer = () => {
-	const { isPlaying: playing, isLive, play, pause, livestream } = usePlayer()
+	const { isPlaying: playing, isLive, play, pause } = usePlayer()
 	const isPlayingLive = playing && isLive
 	const isPlayingArchive = playing && !isLive
 	const allArchives = useQuery(api.recordings.list, {})
@@ -68,14 +69,7 @@ const TapePlayer = () => {
 					height={768}
 					alt='fm'
 				/>
-				<Image
-					title={`в эфире ${livestream?.streamer_name}!`}
-					className={`absolute top-0 z-10 ${livestream?.is_live ? 'animate-blink' : 'hidden'}`}
-					src={'/assets/tape-player/live-indicator.png'}
-					width={1366}
-					height={768}
-					alt='live'
-				/>
+				<LiveIndicator />
 				<div
 					onClick={() =>
 						randomArchiveUrl &&
