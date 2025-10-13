@@ -4,6 +4,7 @@ import { PlayerContextProvider } from '@/components/PlayerBar/PlayerContext'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import type { Metadata } from 'next'
 import './globals.css'
+import { BackgroundImage } from '@/components/BackgroundImage'
 
 export default function RootLayout({
 	children,
@@ -18,6 +19,7 @@ export default function RootLayout({
 						<ThemeProvider>
 							<div className='sm:px-16 p-6'>{children}</div>
 							<PlayerBar />
+							<BackgroundImage />
 						</ThemeProvider>
 					</PlayerContextProvider>
 				</ConvexContextProvider>
@@ -30,6 +32,11 @@ export const metadata: Metadata = {
 	title: 'радио зимы не будет',
 	openGraph: {
 		title: 'радио зимы не будет',
+		images: [
+			{
+				url: 'https://r0zpfsgakx.ufs.sh/f/ulX3r7DWQlCoNpBYhL3AWX1093yJ5FIsDH2Ehjv6awMzcZTC',
+			},
+		],
 	},
 	robots: {
 		index: true,

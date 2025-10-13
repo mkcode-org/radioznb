@@ -3,18 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 html {
-	background-size: cover;
-	background-position: center;
-	background-attachment: fixed;
 	transition: background 0.5s ease;
-}
-
-html.dark {
-	background-image: url('/assets/new/bg_animation.gif');
-}
-
-html.light {
-	background-color: white;
 }
 
 button {
