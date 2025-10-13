@@ -30,6 +30,7 @@ export default function RootLayout({
 
 export const metadata: Metadata = {
 	title: 'радио зимы не будет',
+	description: 'зе бест рэдио ин зе ворлд.',
 	openGraph: {
 		title: 'радио зимы не будет',
 		images: [
