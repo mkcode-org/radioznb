@@ -27,5 +27,12 @@ export default function RootLayout({
 }
 
 export const metadata: Metadata = {
-	title: 'радио зимы не будет — next',
+	title: 'радио зимы не будет',
+	openGraph: {
+		title: 'радио зимы не будет',
+	},
+	robots: {
+		index: true,
+		follow: true,
+	},
 }
