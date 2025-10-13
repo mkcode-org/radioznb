@@ -41,7 +41,7 @@ const TapePlayer = () => {
 			className='sm:w-2xl w-xl relative'
 			onDragStart={(e) => e.preventDefault()}
 		>
-			<WaveAnimation playing={playing} />
+			<WaveAnimation />
 			<div className='relative w-full h-full'>
 				<Image
 					className='relative inset-0 z-10'
