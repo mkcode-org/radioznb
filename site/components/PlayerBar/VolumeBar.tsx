@@ -31,7 +31,7 @@ const VolumeBar = () => {
 			<button {...commonProps} onClick={() => setVolume(volume > 0 ? 0 : 1)}>
 				<Image
 					className='h-8 w-auto'
-					src={`/assets/new/speaker${getVolumeIcon(volume)}.png`}
+					src={`/assets/speaker${getVolumeIcon(volume)}.png`}
 					width={515}
 					height={310}
 					alt='volume'

@@ -24,7 +24,7 @@ const Controls = () => {
 				>
 					<Image
 						className='ignore-invert invert'
-						src={'/assets/new/live-animation.gif'}
+						src={'/assets/live-animation.gif'}
 						width={107}
 						height={107}
 						alt='live'
