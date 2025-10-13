@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { usePlayer } from './PlayerBar/PlayerContext'
-import Volume from './Volume'
+import Volume from './_Volume'
 import WaveAnimation from './Waves'
 
 const RadioPlayer = () => {
