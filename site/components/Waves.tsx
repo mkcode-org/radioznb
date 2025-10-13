@@ -18,7 +18,7 @@ const WaveAnimation: FC<PropsWithChildren> = ({ children }) => {
 			})
 		}, 2000)
 		return () => clearInterval(interval)
-	}, [isLive])
+	}, [isPlaying, isLive])
 
 	if (!isPlaying || !isLive) return children
 	return (
