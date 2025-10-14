@@ -31,7 +31,7 @@ const WaveAnimation: FC<PropsWithChildren> = ({ children }) => {
 }
 
 const WavesLeft: FC<{ src: string[] }> = ({ src }) => (
-	<div className='absolute h-1/5 w-1/7 flex gap-2 sm:gap-4 left-1/4 -top-1/3 max-sm:translate-x-1/3'>
+	<div className='absolute h-1/5 w-1/7 flex gap-2 sm:gap-4 left-2/7 -top-1/3 max-sm:translate-x-1/3'>
 		<div
 			className={`animate-waves relative opacity-0 h-full w-1/4`}
 			style={{ animationDelay: '500ms' }}
@@ -54,7 +54,7 @@ const WavesLeft: FC<{ src: string[] }> = ({ src }) => (
 )
 
 const WavesRight: FC<{ src: string[] }> = ({ src }) => (
-	<div className='absolute h-1/5 w-1/7 flex gap-2 sm:gap-4 right-1/5 -top-1/3'>
+	<div className='absolute h-1/5 w-1/7 flex gap-2 sm:gap-4 right-1/4 -top-1/3'>
 		<div
 			className={`animate-waves relative opacity-0 top-2/5 h-2/5 w-1/8`}
 			style={{ animationDelay: '300ms' }}
