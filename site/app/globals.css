@@ -22,19 +22,19 @@ button:active {
 }
 
 @theme {
-	--animate-fadeInOut: fadeInOut 2s infinite;
+	--animate-waves: waves 2s steps(1, end) infinite;
 	--animate-bg: bg-frames 0.75s infinite;
 	--animate-blink: blink 1.2s steps(1, end) infinite;
 }
 
-@keyframes fadeInOut {
+@keyframes waves {
 	0% {
 		opacity: 0;
 	}
 	30% {
 		opacity: 1;
 	}
-	50% {
+	75% {
 		opacity: 0;
 	}
 }

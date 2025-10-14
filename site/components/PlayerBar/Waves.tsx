@@ -24,19 +24,19 @@ const PlayerBarWavesAnimation: FC<{ playing: boolean }> = ({ playing }) => {
 const Waves: FC<{ src: string[] }> = ({ src }) => (
 	<div className='absolute left-[calc(50%+1.25rem)] sm:left-18 h-1/2 top-0 bottom-0 m-auto w-12 flex'>
 		<div
-			className={`animate-fadeInOut relative opacity-0 w-1/8 h-3/10 m-auto`}
+			className={`animate-waves relative opacity-0 w-1/8 h-3/10 m-auto`}
 			style={{ animationDelay: '0ms' }}
 		>
 			<Image src={src[0]} alt='wave-r-1' fill />
 		</div>
 		<div
-			className={`animate-fadeInOut relative opacity-0 w-1/6 h-6/10 m-auto`}
+			className={`animate-waves relative opacity-0 w-1/6 h-6/10 m-auto`}
 			style={{ animationDelay: '250ms' }}
 		>
 			<Image src={src[1]} alt='wave-r-2' fill />
 		</div>
 		<div
-			className={`animate-fadeInOut relative opacity-0 w-1/4 h-9/10 m-auto`}
+			className={`animate-waves relative opacity-0 w-1/4 h-9/10 m-auto`}
 			style={{ animationDelay: '500ms' }}
 		>
 			<Image src={src[2]} alt='wave-r-3' fill />
