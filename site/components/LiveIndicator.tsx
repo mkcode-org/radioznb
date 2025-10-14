@@ -6,10 +6,9 @@ const LiveIndicator = () => {
 	const isBlinking = livestream?.is_live && !isLive
 	const isVisible = isBlinking || (isLive && isPlaying)
 
+	if (!isVisible) return null
 	return (
-		<div
-			className={`${isVisible ? 'opacity-100' : 'opacity-0'} ${isBlinking && 'animate-blink'} absolute top-0 z-10 transition-opacity duration-300`}
-		>
+		<div className={`${isBlinking && 'animate-blink'} absolute top-0 z-10`}>
 			<Image
 				title={
 					isBlinking && livestream?.streamer_name
