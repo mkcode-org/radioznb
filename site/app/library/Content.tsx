@@ -28,7 +28,7 @@ const PageContent = () => {
 	return (
 		<div className='flex flex-col gap-4'>
 			<HomeButton />
-			<div className='flex'>
+			<div className='flex gap-4'>
 				<Link
 					href={'/library'}
 					className={`sm:hidden flex select-none text-4xl items-center text-center justify-center size-16 ${selectedProgram ? 'block' : 'hidden'}`}

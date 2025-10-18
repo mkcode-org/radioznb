@@ -41,7 +41,7 @@ const Container: FC<PropsWithChildren & { className?: string }> = ({
 	className,
 }) => (
 	<div
-		className={`flex flex-col items-start bg-stone-700/50 text-white rounded-xl p-4 w-full ${className}`}
+		className={`flex flex-col items-start bg-stone-700/50 text-white p-4 w-full ${className}`}
 	>
 		{children}
 	</div>
