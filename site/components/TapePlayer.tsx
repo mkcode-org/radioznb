@@ -50,7 +50,7 @@ const TapePlayer = () => {
 							? toggle(isPlayingArchive, randomArchiveStream)
 							: toggle(isPlayingLive, stream)
 					}
-					className='h-1/3 absolute top-10 w-auto aspect-square left-1/4 cursor-pointer z-20'
+					className='h-1/4 absolute top-16 right-2/5 left-2/7 cursor-pointer z-20'
 				/>
 				<Image
 					className='absolute top-[29.5%] skew-3 left-[30%] h-2.5 w-auto'
