@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import Controls from './Controls'
-import { usePlayer } from './PlayerContext'
+import { usePlayer } from '../PlayerContext'
 import ProgressBar from './ProgressBar'
 import VolumeBar from './VolumeBar'
 

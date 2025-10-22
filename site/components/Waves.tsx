@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { FC, PropsWithChildren, useEffect, useState } from 'react'
-import { usePlayer } from './PlayerBar/PlayerContext'
+import { usePlayer } from './PlayerContext'
 
 const WaveAnimation: FC<PropsWithChildren> = ({ children }) => {
 	const [src, setSrc] = useState<Wave>(waves[0])

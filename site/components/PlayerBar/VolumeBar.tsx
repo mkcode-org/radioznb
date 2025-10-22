@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { usePlayer } from './PlayerContext'
+import { usePlayer } from '../PlayerContext'
 import Image from 'next/image'
 
 const VolumeBar = () => {

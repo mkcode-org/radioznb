@@ -18,7 +18,7 @@ export default function Home() {
 				</Link>
 				<Link href={'/about'} className='max-sm:w-1/3'>
 					<SwapImage
-						src='/assets/tab-who2.jpg'
+						src='/assets/tab-who.jpg'
 						hover='/assets/tab-who-bold.jpg'
 						size={200}
 					/>

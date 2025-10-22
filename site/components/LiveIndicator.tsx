@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { usePlayer } from './PlayerBar/PlayerContext'
+import { usePlayer } from './PlayerContext'
 
 const LiveIndicator = () => {
 	const { isLive, isPlaying, livestream } = usePlayer()

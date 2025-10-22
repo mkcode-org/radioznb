@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { usePlayer } from './PlayerBar/PlayerContext'
+import { usePlayer } from './PlayerContext'
 import Volume from './_Volume'
 import WaveAnimation from './Waves'
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { formatTime } from './Player'
-import { usePlayer } from './PlayerContext'
+import { usePlayer } from '../PlayerContext'
 import PlayerBarWavesAnimation from './Waves'
 
 const ProgressBar = () => {

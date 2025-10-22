@@ -9,7 +9,7 @@ import {
 	useRef,
 	useState,
 } from 'react'
-import { useLivestreamStatus } from '../hooks/useLivestreamStatus'
+import { useLivestreamStatus } from './hooks/useLivestreamStatus'
 
 export const PlayerContextProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [src, setSrc] = useState('')
@@ -151,6 +151,7 @@ export const PlayerContextProvider: FC<PropsWithChildren> = ({ children }) => {
 				timecode,
 				duration,
 				isLive,
+				setIsLive,
 				play,
 				pause,
 				toggle,
@@ -171,7 +172,8 @@ const defaultState: PlayerContextType = {
 	isPlaying: false,
 	timecode: 0,
 	duration: 0,
-	isLive: false,
+	isLive: true,
+	setIsLive: () => {},
 	play: () => {},
 	pause: () => {},
 	seek: () => {},
@@ -200,6 +202,18 @@ const getLocalStorageContext = (): PlayerContextType => {
 	return defaultState
 }
 
+export const stream: Stream = {
+	src: 'https://server.radioznb.ru/listen/radioznb-live/radio.mp3',
+	title: 'радио зимы не будет',
+	isLive: true,
+}
+
+export type Stream = {
+	src: string
+	title: string
+	isLive?: boolean
+}
+
 type PlayerContextType = {
 	src: string
 	title: string
@@ -207,6 +221,7 @@ type PlayerContextType = {
 	timecode: number
 	duration: number
 	isLive: boolean
+	setIsLive: (arg: boolean) => void
 	play: (props: PlayOptions) => void
 	pause: () => void
 	toggle: () => void

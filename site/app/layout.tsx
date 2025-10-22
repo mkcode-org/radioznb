@@ -1,6 +1,6 @@
 import ConvexContextProvider from '@/components/ConvexContext'
 import PlayerBar from '@/components/PlayerBar/Player'
-import { PlayerContextProvider } from '@/components/PlayerBar/PlayerContext'
+import { PlayerContextProvider } from '@/components/PlayerContext'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import type { Metadata } from 'next'
 import './globals.css'

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { usePlayer } from './PlayerContext'
+import { stream, usePlayer } from '../PlayerContext'
 
 const Controls = () => {
 	const { isPlaying, toggle, isLive, play, livestream } = usePlayer()
@@ -33,12 +33,6 @@ const Controls = () => {
 			)}
 		</div>
 	)
-}
-
-export const stream = {
-	src: 'https://server.radioznb.ru/listen/radioznb-live/radio.mp3',
-	title: 'радио зимы не будет',
-	isLive: true,
 }
 
 // export const streamArchive = {
